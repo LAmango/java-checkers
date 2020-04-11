@@ -1,8 +1,8 @@
 public class checkerLogic {
 	
-	public boolean checkForMove(GameBoard game, Player p1)
+	public static boolean checkForMove(GameBoard game, Player p1, int pos)
 	{
-		int x = 0, y = 0;
+		int x = pos/8, y = pos%8;
 		if(game.board[x+1][y+1] == 0)
 			return true;
 		else if (game.board[x-1][y+1] == 0)
@@ -11,9 +11,9 @@ public class checkerLogic {
 		return false;
 	}
 	
-	public boolean checkForJump(GameBoard board, Player p1)
+	public static boolean checkForJump(GameBoard game, Player p1, int pos)
 	{
-		int x = 0, y = 0;
+		int x = pos/8, y = pos%8;
 		if(game.board[x+2][y+2] == 0)
 			return true;
 		else if (game.board[x-2][y+2] == 0)
@@ -22,17 +22,17 @@ public class checkerLogic {
 		return false;
 	}
 	
-	public void makeMove(GameBoard game, Player p1, int pos)
+	public static void makeMove(GameBoard game, Player p1, int pos)
 	{
-		
+		int x = pos/8, y = pos%8;
 	}
 	
-	public void makeJump(GameBoard game, Player p1, int pos)
+	public static void makeJump(GameBoard game, Player p1, int pos)
 	{
-		
+		int x = pos/8, y = pos%8;
 	}
 	
-	public boolean checkForWin(Player p1, Player p2)
+	public static boolean checkForWin(Player p1, Player p2)
 	{
 		if (p1.getGamePieces() == 0 || p2.getGamePieces() == 0)
 			return true;
@@ -43,6 +43,7 @@ public class checkerLogic {
 		Player p1 = new Player(1);
 		Player p2 = new Player(2);
 		GameBoard gameBoard = new GameBoard();
+		System.out.println(checkForMove(gameBoard, p1, 42));
 	}
 	
 }
@@ -51,8 +52,7 @@ public class checkerLogic {
 	
 class Player {
 		
-	private int playerNumber;    //player 1 or 2
-	private int currentPosition;
+	protected int playerNumber;    //player 1 or 2
 	private int gamePieces = 12;
 	
 	public Player(int num)
@@ -114,9 +114,9 @@ class GameBoard extends CheckerType{
 		}
 	}
 	
-	public int checkType()
+	public int checkType(int pos)
 	{
-		int x = 0, y = 0;
+		int x = pos/8, y = pos%8;
 		switch (board[x][y]) {
 			case BLACK_REGULAR:
 				return BLACK_REGULAR;
