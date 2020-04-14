@@ -2,6 +2,17 @@ import javax.swing.*;
 
 public class GameGraphic extends JFrame {
 
+    private GameBoardGraphic gb;
+    public GameBoard gameBoard;
+
+    public GameGraphic() {
+        WelcomeScreenGraphic welcome = new WelcomeScreenGraphic(this);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500,500);
+        add(welcome);
+        setVisible(true);
+    }
+
     public void setNewPanel(JPanel panel) {
         getContentPane().removeAll();
         getContentPane().invalidate();
@@ -9,12 +20,9 @@ public class GameGraphic extends JFrame {
         getContentPane().validate();
     }
 
-    public static void main(String[] args) {
-        GameGraphic gameGraphicFrame = new GameGraphic();
-        WelcomeScreenGraphic welcome = new WelcomeScreenGraphic(gameGraphicFrame);
-        gameGraphicFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameGraphicFrame.setSize(500,500);
-        gameGraphicFrame.add(welcome);
-        gameGraphicFrame.setVisible(true);
+    public void startGame() {
+        gb = new GameBoardGraphic(this);
+        setNewPanel(gb);
+        gameBoard = new GameBoard(gb.getBoardGraphic());
     }
 }

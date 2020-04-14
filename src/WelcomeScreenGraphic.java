@@ -13,8 +13,7 @@ public class WelcomeScreenGraphic extends JPanel {
            @Override
            public void mousePressed(MouseEvent e) {
                super.mouseClicked(e);
-               GameBoardGraphic gb = new GameBoardGraphic(frame);
-               frame.setNewPanel(gb);
+               frame.startGame();
            }
        });
        JLabel title  = new JLabel("Checkers");

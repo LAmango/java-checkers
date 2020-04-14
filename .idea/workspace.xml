@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-checkers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-checkers.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checkers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameBoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoardGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Template.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TileGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checkerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkerLogic.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1aXfyen5HMZLVhR8EmUcNeyp1hk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="checkerLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="checkerLogic" />
+      <module name="java-checkers" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.checkerLogic" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="" />
+      <created>1586887114296</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586887114296</updated>
+      <workItem from="1586887123164" duration="750000" />
+      <workItem from="1586887896136" duration="8353000" />
+      <workItem from="1586897432191" duration="127000" />
+      <workItem from="1586897566784" duration="715000" />
+      <workItem from="1586898287871" duration="551000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2531" y="132" width="1026" height="844" key="#Project_Structure" timestamp="1586897727670">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2531" y="132" width="1026" height="844" key="#Project_Structure/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586897727670" />
+    <state x="2057" y="164" width="677" height="754" key="#checkerLogic" timestamp="1586896913327">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2057" y="164" width="677" height="754" key="#checkerLogic/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586896913327" />
+    <state x="2781" y="313" width="526" height="483" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1586887930627">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2781" y="313" width="526" height="483" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586887930627" />
+    <state x="2450" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586898432145">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2450" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898432145" />
+    <state x="2128" y="334" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586896769327">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2128" y="334" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586896769327" />
+    <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl" timestamp="1586898021496">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898021496" />
+    <state width="914" height="210" key="GridCell.Tab.0.bottom" timestamp="1586897558842">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="914" height="210" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586897558842" />
+    <state width="914" height="210" key="GridCell.Tab.0.center" timestamp="1586897558842">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="914" height="210" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586897558842" />
+    <state width="914" height="210" key="GridCell.Tab.0.left" timestamp="1586897558842">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="914" height="210" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586897558842" />
+    <state width="914" height="210" key="GridCell.Tab.0.right" timestamp="1586897558842">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="914" height="210" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586897558842" />
+    <state width="1749" height="323" key="GridCell.Tab.1.bottom" timestamp="1586894432020">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1749" height="323" key="GridCell.Tab.1.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586894432020" />
+    <state width="1749" height="323" key="GridCell.Tab.1.center" timestamp="1586894432020">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1749" height="323" key="GridCell.Tab.1.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586894432020" />
+    <state width="1749" height="323" key="GridCell.Tab.1.left" timestamp="1586894432020">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1749" height="323" key="GridCell.Tab.1.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586894432020" />
+    <state width="1749" height="323" key="GridCell.Tab.1.right" timestamp="1586894432020">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1749" height="323" key="GridCell.Tab.1.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586894432020" />
+    <state x="2544" y="190" width="1026" height="844" key="SettingsEditor" timestamp="1586898497823">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2544" y="190" width="1026" height="844" key="SettingsEditor/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898497823" />
+  </component>
+</project>

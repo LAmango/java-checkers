@@ -21,7 +21,6 @@ public class BoardGraphic extends JPanel {
                         @Override
                         public void mouseClicked(MouseEvent e) {
                             System.out.println(tileGraphic.getCords());
-                            tileGraphic.setCheckerPiece();
                             super.mouseClicked(e);
                         }
                     });
@@ -34,7 +33,6 @@ public class BoardGraphic extends JPanel {
                         @Override
                         public void mouseClicked(MouseEvent e) {
                             System.out.println(tileGraphic.getCords());
-                            tileGraphic.setCheckerPiece();
                             super.mouseClicked(e);
                         }
                     });
@@ -46,4 +44,8 @@ public class BoardGraphic extends JPanel {
         }
     }
 
+    public void addCheckerPieceToTile(Color color, int row, int col) {
+        TileGraphic t = (TileGraphic) this.getComponent(col * 8 + row);
+        t.setCheckerPiece(color);
+    }
 }

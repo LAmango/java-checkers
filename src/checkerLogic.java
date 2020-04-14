@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class checkerLogic {
 	
 	public static boolean checkForMove(GameBoard game, Player p1, int pos)
@@ -42,8 +44,8 @@ public class checkerLogic {
 	public static void main(String[] args) {
 		Player p1 = new Player(1);
 		Player p2 = new Player(2);
-		GameBoard gameBoard = new GameBoard();
-		System.out.println(checkForMove(gameBoard, p1, 42));
+		GameGraphic gameFrame = new GameGraphic();
+		System.out.println(checkForMove(gameFrame.gameBoard, p1, 42));
 	}
 	
 }
@@ -79,9 +81,11 @@ class Player {
 class GameBoard extends CheckerType{
 	
 	protected static int[][] board = new int[8][8];
-			
-	public GameBoard()
+	protected static BoardGraphic boardGraphic;
+
+	public GameBoard(BoardGraphic bg)
 	{
+		boardGraphic = bg;
 		fillBoard();
 		printBoard();
 	}
@@ -92,22 +96,30 @@ class GameBoard extends CheckerType{
 			for(int y = 0; y < 8; y++){
 				if(x <= 2){
 					if(x%2 == 0){
-						if(y%2 != 0)
+						if(y%2 != 0) {
 							board[x][y] = RED_REGULAR;
+							boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
+						}
 					}
 					else if(x%2 != 0){
-						if(y%2 == 0)
+						if(y%2 == 0) {
 							board[x][y] = RED_REGULAR;
+							boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
+						}
 					}
 				}
 				else if(x >= 5){
 					if(x%2 == 0){
-						if(y%2 != 0)
+						if(y%2 != 0) {
 							board[x][y] = BLACK_REGULAR;
+							boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
+						}
 					}
 					else if(x%2 != 0){
-						if(y%2 == 0)
+						if(y%2 == 0) {
 							board[x][y] = BLACK_REGULAR;
+							boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
+						}
 					}
 				}
 			}
