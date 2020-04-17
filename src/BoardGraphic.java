@@ -54,6 +54,11 @@ public class BoardGraphic extends JPanel {
         TileGraphic t = this.getTile(row, col);
         t.setKing();
     }
+    
+    public void swapPieces(TileGraphic tile2, int row, int col){
+        TileGraphic t = this.getTile(row, col);
+        t.swap(tile2);
+    }
 
     public TileGraphic getTile(int row, int col) {
         return (TileGraphic) this.getComponent(col * 8 + row);
@@ -75,7 +80,7 @@ public class BoardGraphic extends JPanel {
             }
             if (tileGraphic.isEmpty()){
                 checkerLogic.makeMove(tileGraphic, lastClickedTile);
-                tileGraphic.swap(lastClickedTile);
+                swapPieces(lastClickedTile, tileGraphic.getRow(), tileGraphic.getColumn());
             }
             
             System.out.println(tileGraphic.getCords());

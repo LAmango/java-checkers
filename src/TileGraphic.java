@@ -130,5 +130,7 @@ public class TileGraphic extends JPanel {
         tile.col = temp.col;
         if(!this.hasCheckPiece)
             makeEmpty();
+            
+        repaint();
     }
 }

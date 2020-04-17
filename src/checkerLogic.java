@@ -91,6 +91,7 @@ public class checkerLogic extends CheckerType{
 	public static void makeMove(BoardPoint point1, BoardPoint point2)
 	{
 		point1.swap(point2);
+		gameFrame.gameBoard.printBoard();
 	}
 	
 	public static boolean validSpot(BoardPoint point)
