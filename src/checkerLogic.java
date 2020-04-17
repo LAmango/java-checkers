@@ -39,14 +39,14 @@ public class checkerLogic extends CheckerType{
 			return true;
 		return false;
 	}
-	
+/*
 	public static void makeMove(BoardPoint[] board, BoardPoint start, BoardPoint end)
 	{
 		if(validSpot(point)){
 			start.swap(end);
 		}
 	}
-	
+*/
 	/*
 	public static boolean checkMove(GameBoard game, Player p, int row, int column, int checkFor, boolean king)
 	{

@@ -64,6 +64,7 @@ public class BoardGraphic extends JPanel {
             System.out.println(tileGraphic.getCords());
             lastClickedTile = tileGraphic;
             tileGraphic.setKing();
+
             super.mouseClicked(e);
         }
     }

@@ -20,24 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlayerSelectionPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileGraphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checkerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkerLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -103,7 +113,9 @@
       <workItem from="1586897566784" duration="715000" />
       <workItem from="1586898287871" duration="1311000" />
       <workItem from="1586956542539" duration="17676000" />
-      <workItem from="1587050232952" duration="6040000" />
+      <workItem from="1587050232952" duration="24732000" />
+      <workItem from="1587155403721" duration="69000" />
+      <workItem from="1587157385965" duration="1018000" />
     </task>
     <servers />
   </component>
@@ -151,26 +163,26 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898021496" />
-    <state width="1358" height="168" key="GridCell.Tab.0.bottom" timestamp="1587056269357">
+    <state width="1874" height="263" key="GridCell.Tab.0.bottom" timestamp="1587155472260">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1358" height="168" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587056269357" />
-    <state width="1358" height="168" key="GridCell.Tab.0.center" timestamp="1587056269357">
+    <state width="1874" height="263" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
+    <state width="1874" height="263" key="GridCell.Tab.0.center" timestamp="1587155472260">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1358" height="168" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587056269357" />
-    <state width="1358" height="168" key="GridCell.Tab.0.left" timestamp="1587056269357">
+    <state width="1874" height="263" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
+    <state width="1874" height="263" key="GridCell.Tab.0.left" timestamp="1587155472260">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946868" />
-    <state width="1358" height="168" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587056269357" />
-    <state width="1358" height="168" key="GridCell.Tab.0.right" timestamp="1587056269357">
+    <state width="1874" height="263" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
+    <state width="1874" height="263" key="GridCell.Tab.0.right" timestamp="1587155472260">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1358" height="168" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587056269357" />
+    <state width="1874" height="263" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
     <state width="1358" height="334" key="GridCell.Tab.1.bottom" timestamp="1587047888328">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -191,6 +203,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2544" y="190" width="1026" height="844" key="SettingsEditor/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898497823" />
+    <state x="2752" y="233" width="764" height="615" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587061189404">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2752" y="233" width="764" height="615" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587061189404" />
     <state x="2486" y="164" width="1296" height="752" key="new project wizard" timestamp="1587047885698">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
