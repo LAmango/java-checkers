@@ -1,36 +1,97 @@
 import java.awt.*;
 import java.util.*;
 
+/*
+****************************************************
+* checkerLogic									   *
+****************************************************
+* * GameGraphic                                     *
+****************************************************
+* * * GameBoardGraphic                             *
+* * * **********************************************
+* * * * BoardGraphic                               *
+* * * * ********************************************
+* * * * * TileGraphic                              *
+* * * * *                                          *
+* * * * *                                          *
+* * * * ********************************************
+* * * * BottomBoarGraphic                          *
+* * * * ********************************************
+* * * * *                                          *
+* * * * ********************************************
+* * * **********************************************
+* * ************************************************
+* * ************************************************
+ */
+
 public class checkerLogic extends CheckerType{
+	
+	public static GameGraphic gameFrame;
+	
+	public static ArrayList<BoardPoint> moveAvailable(TileGraphic tile)
+	{
+		int index = tile.getRow() * 8 + tile.getColumn();
+		return moveAvailable(gameFrame.gameBoard.points, gameFrame.gameBoard.points[index]);
+	}
 	
 	public static ArrayList<BoardPoint> moveAvailable(BoardPoint[] board, BoardPoint point)
 	{
 		ArrayList<BoardPoint> list = new ArrayList<BoardPoint>(0);
 				
 		if (point.getPiece() == RED_REGULAR){
-			if( point.getIndex() + 9 < 63 )
-				list.add( validSpot(board[point.getIndex()+9]) ? board[point.getIndex()+9] : null);
-			if( point.getIndex() + 7 < 63 )
-				list.add( validSpot(board[point.getIndex()+7]) ? board[point.getIndex()+7] : null);
+			if( point.getIndex() + 9 < 63 && point.getCol() != 7){
+				if( validSpot(board[point.getIndex()+9]) )
+					list.add(board[point.getIndex()+9]);
+			}
+			if( point.getIndex() + 7 < 63 && point.getCol() != 0){
+				if( validSpot(board[point.getIndex()+7]) )
+					list.add(board[point.getIndex()+7]);
+			}
 		}
 		else if (point.getPiece() == BLACK_REGULAR){
-			if( point.getIndex() - 9 > 0 )
-				list.add( validSpot(board[point.getIndex()-9]) ? board[point.getIndex()-9] : null);
-			if( point.getIndex() - 7 > 0 )
-				list.add( validSpot(board[point.getIndex()-7]) ? board[point.getIndex()-7] : null);
+			if( point.getIndex() - 9 > 0 && point.getCol() != 0){
+				if( validSpot(board[point.getIndex()-9]) )
+					list.add(board[point.getIndex()-9]);
+			}			
+			if( point.getIndex() - 7 > 0 && point.getCol() != 7){
+				if( validSpot(board[point.getIndex()-7]) )
+					list.add(board[point.getIndex()-7]);
+			}
 		}
 		else{
-			if( point.getIndex() + 9 < 63 )
-				list.add( validSpot(board[point.getIndex()+9]) ? board[point.getIndex()+9] : null);
-			if( point.getIndex() + 7 < 63 )
-				list.add( validSpot(board[point.getIndex()+7]) ? board[point.getIndex()+7] : null);
-			if( point.getIndex() - 9 > 0 )
-				list.add( validSpot(board[point.getIndex()-9]) ? board[point.getIndex()-9] : null);
-			if( point.getIndex() - 7 > 0 )
-				list.add( validSpot(board[point.getIndex()-7]) ? board[point.getIndex()-7] : null);
+			if( point.getIndex() + 9 < 63 ){
+				if( validSpot(board[point.getIndex()+9]) )
+					list.add(board[point.getIndex()+9]);
+			}
+			if( point.getIndex() + 7 < 63 ){
+				if( validSpot(board[point.getIndex()+7]) )
+					list.add(board[point.getIndex()+7]);
+			}
+			if( point.getIndex() - 9 > 0 ){
+				if( validSpot(board[point.getIndex()-9]) )
+					list.add(board[point.getIndex()-9]);
+			}			
+			if( point.getIndex() - 7 > 0 ){
+				if( validSpot(board[point.getIndex()-7]) )
+					list.add(board[point.getIndex()-7]);
+			}
 		}
 		
 		return list;
+	}
+	
+	public static void makeMove(TileGraphic tile1, TileGraphic tile2)
+	{
+		int index1 = tile1.getRow() * 8 + tile1.getColumn();
+		int index2 = tile2.getRow() * 8 + tile2.getColumn();
+		
+		makeMove(gameFrame.gameBoard.points[index1], gameFrame.gameBoard.points[index2]);
+	}
+	
+	public static void makeMove(BoardPoint point1, BoardPoint point2)
+	{
+		point1.swap(point2);
+		gameFrame.gameBoard.printBoard();
 	}
 	
 	public static boolean validSpot(BoardPoint point)
@@ -174,8 +235,8 @@ public class checkerLogic extends CheckerType{
 	public static void main(String[] args) {
 		Player p1 = new Player(1);
 		Player p2 = new Player(2);
-		GameGraphic gameFrame = new GameGraphic();
-		moveAvailable(gameFrame.gameBoard.points, gameFrame.gameBoard.points[3]);
+		gameFrame = new GameGraphic();
+		//moveAvailable(gameFrame.gameBoard.points, gameFrame.gameBoard.points[3]);
 		//System.out.println(checkForMove(gameFrame.gameBoard, p1, 5 , 4));
 	}
 	
@@ -216,42 +277,7 @@ class GameBoard extends CheckerType{
 	protected static BoardGraphic boardGraphic;
 
 	public GameBoard(BoardGraphic bg)
-	{
-		
-		for(int i = 0, x = 0, y = 0; i < points.length; i++, y++){
-			if(y == 8){
-				y = 0;
-				x++;
-			}
-			if(i < 24){
-				if(x%2 == 0 && y%2 != 0)
-					points[i] = new BoardPoint(i, x, y, RED_REGULAR);
-				else if(x%2 != 0 && y%2 == 0)
-					points[i] = new BoardPoint(i, x, y, RED_REGULAR);
-				else
-					points[i] = new BoardPoint(i, x, y);
-			}
-			else if ( i > 23 && i < 40)
-				points[i] = new BoardPoint(i, x, y);
-			else {
-				if(x%2 == 0 && y%2 != 0)
-					points[i] = new BoardPoint(i, x, y, BLACK_REGULAR);
-				else if(x%2 != 0 && y%2 == 0)
-					points[i] = new BoardPoint(i, x, y, BLACK_REGULAR);
-				else
-					points[i] = new BoardPoint(i, x, y);
-			}
-		}
-		
-		for(int x = 0, y = 0; x < points.length; x++, y++){
-			System.out.print(points[x].getPiece());
-			System.out.print(" ");
-			if(y == 7){
-				System.out.println();
-				y = -1;
-			}
-		}
-		
+	{	
 		System.out.println();
 		
 		boardGraphic = bg;
@@ -261,6 +287,40 @@ class GameBoard extends CheckerType{
 	
 	public static void fillBoard()
 	{
+		for(int i = 0, x = 0, y = 0; i < points.length; i++, y++){
+			if(y == 8){
+				y = 0;
+				x++;
+			}
+			if(i < 24){
+				if(x%2 == 0 && y%2 != 0){
+					points[i] = new BoardPoint(i, x, y, RED_REGULAR);
+					boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
+				}
+				else if(x%2 != 0 && y%2 == 0){
+					points[i] = new BoardPoint(i, x, y, RED_REGULAR);
+					boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
+				}
+				else
+					points[i] = new BoardPoint(i, x, y);
+			}
+			else if ( i > 23 && i < 40)
+				points[i] = new BoardPoint(i, x, y);
+			else {
+				if(x%2 == 0 && y%2 != 0){
+					points[i] = new BoardPoint(i, x, y, BLACK_REGULAR);
+					boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
+				}
+				else if(x%2 != 0 && y%2 == 0){
+					points[i] = new BoardPoint(i, x, y, BLACK_REGULAR);
+					boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
+				}
+				else
+					points[i] = new BoardPoint(i, x, y);
+			}
+		}
+		
+		/*
 		for(int x = 0; x < board.length; x++){
 			for(int y = 0; y < 8; y++){
 				if(x <= 2){
@@ -292,7 +352,7 @@ class GameBoard extends CheckerType{
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
 	public int checkType(int pos)
@@ -314,13 +374,22 @@ class GameBoard extends CheckerType{
 	
 	public void printBoard()
 	{
+		for(int x = 0, y = 0; x < points.length; x++, y++){
+			System.out.print(points[x].getPiece());
+			System.out.print(" ");
+			if(y == 7){
+				System.out.println();
+				y = -1;
+			}
+		}
+		/*
 		for(int x = 0; x < board.length; x++){
 			for(int y = 0; y < 8; y++){
 				System.out.print(board[x][y]);
 				System.out.print(" ");
 			}
 			System.out.println();
-		}
+		}*/
 	}
 }
 
@@ -368,11 +437,11 @@ class BoardPoint {
 		return piece;
 	}
 	
-	public int getX(){
+	public int getRow(){
 		return row;
 	}
 	
-	public int getY(){
+	public int getCol(){
 		return column;
 	}
 	
@@ -381,7 +450,7 @@ class BoardPoint {
 	}
 	
 	public boolean equals(BoardPoint p){
-		if (p.getX() == row && p.getY() == column)
+		if (p.getRow() == row && p.getCol() == column)
 			return true;
 		return false;
 	}

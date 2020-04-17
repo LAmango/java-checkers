@@ -5,8 +5,8 @@ import java.awt.geom.GeneralPath;
 public class TileGraphic extends JPanel {
     private final Color backgroundColor;
     private Color pieceColor;
-    private final int row;
-    private final int col;
+    private int row;
+    private int col;
     private Boolean hasCheckPiece = false;
     private Boolean isHighlighted = false;
     private Boolean isKing = false;
@@ -70,6 +70,21 @@ public class TileGraphic extends JPanel {
         pieceColor = color;
         repaint();
     }
+    
+    public Color getBackgroundColor(){
+        return backgroundColor;
+    }
+    
+    public boolean isEmpty(){
+        if(hasCheckPiece)
+            return false;
+        return true;
+    }
+    
+    public void makeEmpty(){
+        hasCheckPiece = false;
+        repaint();
+    }
 
     public void setHighlight() {
         isHighlighted = !isHighlighted;
@@ -78,6 +93,44 @@ public class TileGraphic extends JPanel {
 
     public void setKing() {
         isKing = true;
+        repaint();
+    }
+    
+    public int getRow(){
+        return row;
+    }
+    
+    public int getColumn(){
+        return col;
+    }
+    
+    public boolean getKing(){
+        return isKing;
+    }
+    
+    public boolean equalTile(TileGraphic tile){
+        if(this.row == tile.row && this.col == tile.col)
+            return true;
+        return false;
+    }
+    
+    public void swap(TileGraphic tile){
+        TileGraphic temp = this;
+        
+        this.hasCheckPiece = tile.hasCheckPiece;
+        this.isKing = tile.isKing;
+        this.pieceColor = tile.pieceColor;
+        this.row = tile.row;
+        this.col = tile.col;
+        
+        tile.hasCheckPiece = temp.hasCheckPiece;
+        tile.isKing = temp.isKing;
+        tile.pieceColor = temp.pieceColor;
+        tile.row = temp.row;
+        tile.col = temp.col;
+        if(!this.hasCheckPiece)
+            makeEmpty();
+            
         repaint();
     }
 }

@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PlayerSelectionPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameGraphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/WelcomeScreenGraphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checkerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkerLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +100,7 @@
       <workItem from="1586956542539" duration="17676000" />
       <workItem from="1587050232952" duration="24732000" />
       <workItem from="1587155403721" duration="69000" />
-      <workItem from="1587157385965" duration="1018000" />
+      <workItem from="1587157385965" duration="1995000" />
     </task>
     <servers />
   </component>

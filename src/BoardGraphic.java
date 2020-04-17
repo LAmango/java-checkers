@@ -2,13 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.*;
 
 public class BoardGraphic extends JPanel {
 
     private GridLayout gridBoard;
-    private TileGraphic lastClickedTile;
+    protected TileGraphic lastClickedTile;
+    protected GameBoard gameBoard;
+    protected ArrayList<BoardPoint> spots;
 
     public BoardGraphic() {
+        spots = new ArrayList<BoardPoint>(0);
+        lastClickedTile = new TileGraphic(Color.BLACK, -1, -1);
         gridBoard = new GridLayout(8,8);
         setLayout(gridBoard);
         int col =  0;
@@ -18,13 +23,15 @@ public class BoardGraphic extends JPanel {
             if (i%2 == 0) {
                 for (int j = 0; j < 8; j++) {
                     TileGraphic tileGraphic = new TileGraphic(j%2 == 0 ? Color.RED : Color.BLACK, row, col++);
-                    tileGraphic.addMouseListener(new TileClickListener(tileGraphic));
+                    if(tileGraphic.getBackgroundColor() == Color.BLACK)
+                        tileGraphic.addMouseListener(new TileClickListener(tileGraphic));
                     add(tileGraphic);
                 }
             }else {
                 for (int j = 0; j < 8; j++) {
                     TileGraphic tileGraphic = new TileGraphic(j%2 == 0 ? Color.BLACK : Color.RED, row, col++);
-                    tileGraphic.addMouseListener(new TileClickListener(tileGraphic));
+                    if(tileGraphic.getBackgroundColor() == Color.BLACK)
+                        tileGraphic.addMouseListener(new TileClickListener(tileGraphic));
                     add(tileGraphic);
                 }
             }
@@ -47,6 +54,11 @@ public class BoardGraphic extends JPanel {
         TileGraphic t = this.getTile(row, col);
         t.setKing();
     }
+    
+    public void swapPieces(TileGraphic tile2, int row, int col){
+        TileGraphic t = this.getTile(row, col);
+        t.swap(tile2);
+    }
 
     public TileGraphic getTile(int row, int col) {
         return (TileGraphic) this.getComponent(col * 8 + row);
@@ -61,10 +73,24 @@ public class BoardGraphic extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            if ( !spots.isEmpty() ){
+                for (BoardPoint p : spots){
+                    highlightTile(p.getCol(), p.getRow());
+                }
+            }
+            if (tileGraphic.isEmpty()){
+                checkerLogic.makeMove(tileGraphic, lastClickedTile);
+                swapPieces(lastClickedTile, tileGraphic.getRow(), tileGraphic.getColumn());
+            }
+            
             System.out.println(tileGraphic.getCords());
             lastClickedTile = tileGraphic;
-            tileGraphic.setKing();
-
+            //tileGraphic.setKing();
+            spots = checkerLogic.moveAvailable(tileGraphic);
+            for (BoardPoint p : spots){
+                highlightTile(p.getCol(), p.getRow());
+            }
+            //System.out.println("size: " + spots.size());
             super.mouseClicked(e);
         }
     }
