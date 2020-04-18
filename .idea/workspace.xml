@@ -21,6 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/TileGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerSelectionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerSelectionPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TileGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +109,8 @@
       <workItem from="1586956542539" duration="17676000" />
       <workItem from="1587050232952" duration="24732000" />
       <workItem from="1587155403721" duration="69000" />
-      <workItem from="1587157385965" duration="1995000" />
+      <workItem from="1587157385965" duration="4404000" />
+      <workItem from="1587219002532" duration="309000" />
     </task>
     <servers />
   </component>
@@ -148,26 +158,26 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898021496" />
-    <state width="1874" height="263" key="GridCell.Tab.0.bottom" timestamp="1587155472260">
+    <state width="1874" height="263" key="GridCell.Tab.0.bottom" timestamp="1587219519936">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1874" height="263" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
-    <state width="1874" height="263" key="GridCell.Tab.0.center" timestamp="1587155472260">
+    <state width="1874" height="263" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587219519936" />
+    <state width="1874" height="263" key="GridCell.Tab.0.center" timestamp="1587219519936">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1874" height="263" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
-    <state width="1874" height="263" key="GridCell.Tab.0.left" timestamp="1587155472260">
+    <state width="1874" height="263" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587219519936" />
+    <state width="1874" height="263" key="GridCell.Tab.0.left" timestamp="1587219519935">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946868" />
-    <state width="1874" height="263" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
-    <state width="1874" height="263" key="GridCell.Tab.0.right" timestamp="1587155472260">
+    <state width="1874" height="263" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587219519935" />
+    <state width="1874" height="263" key="GridCell.Tab.0.right" timestamp="1587219519936">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1874" height="263" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587155472260" />
+    <state width="1874" height="263" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587219519936" />
     <state width="1358" height="334" key="GridCell.Tab.1.bottom" timestamp="1587047888328">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

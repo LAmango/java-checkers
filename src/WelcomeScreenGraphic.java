@@ -30,6 +30,7 @@ public class WelcomeScreenGraphic extends JPanel {
         JLabel title  = new JLabel("Checkers");
         title.setFont(new Font("Times New Roman", Font.BOLD, 60));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setBackground(Color.GRAY);
         title.setBorder(new EmptyBorder(5,5,5,5));
 
         // button component

@@ -116,7 +116,7 @@ public class TileGraphic extends JPanel {
     
     public void swap(TileGraphic tile){
         TileGraphic temp = this;
-        
+         
         this.hasCheckPiece = tile.hasCheckPiece;
         this.isKing = tile.isKing;
         this.pieceColor = tile.pieceColor;

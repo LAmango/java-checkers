@@ -14,16 +14,18 @@ public class PlayerSelectionPanel extends JPanel {
         }
 
         setBorder(new EmptyBorder(10, 10, 10, 10));
-        setBackground(Color.WHITE);
+        setBackground(new Color(95, 95, 95));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JTextField textField = new JTextField(20);
+        textField.setBackground(new Color(95,95,95));
         textField.setMaximumSize(new Dimension(Integer.MAX_VALUE, textField.getPreferredSize().height));
         textField.setBorder(BorderFactory.createTitledBorder("Player" + playerNum));
         add(textField);
         add(Box.createVerticalStrut(10));
 
         JList players = new JList(playerListModel);
+        players.setBackground(new Color(95, 95, 95));
         players.getSelectionModel().addListSelectionListener(new WelcomeScreenGraphic.PlayerListListener(textField, players, playerNum));
         players.setBorder(BorderFactory.createTitledBorder("Player Selection"));
         players.setMaximumSize(new Dimension(Integer.MAX_VALUE, players.getPreferredSize().height));
