@@ -49,6 +49,17 @@ public class BoardGraphic extends JPanel {
         TileGraphic t = this.getTile(row, col);
         t.setHighlight();
     }
+    
+    public void resetHighlight(){
+        for(int row = 0, col = 0; row < 8 ; col++){
+            TileGraphic t = this.getTile(row, col);
+            t.resetHighlight();
+            if(col == 7){
+                col = 0;
+                row++;
+            }
+        }
+    }
 
     public void turnPieceIntoKing(int row, int col) {
         TileGraphic t = this.getTile(row, col);
@@ -61,6 +72,7 @@ public class BoardGraphic extends JPanel {
     }
 
     public TileGraphic getTile(int row, int col) {
+        //System.out.println(this.getComponent(col * 8 + row));
         return (TileGraphic) this.getComponent(col * 8 + row);
     }
 
@@ -73,24 +85,26 @@ public class BoardGraphic extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if ( !spots.isEmpty() ){
+            resetHighlight();
+            spots.clear();
+            if (tileGraphic.isEmpty()){
+                checkerLogic.makeMove(lastClickedTile, tileGraphic);
+                tileGraphic.swap(lastClickedTile);
+                /*
+                for (BoardPoint p : spots){
+                    resetHighlight();
+                }*/
+            }
+            else{
+                spots = checkerLogic.moveAvailable(tileGraphic);
+                System.out.println("size: " + spots.size());
+                lastClickedTile = tileGraphic;
                 for (BoardPoint p : spots){
                     highlightTile(p.getCol(), p.getRow());
                 }
             }
-            if (tileGraphic.isEmpty()){
-                checkerLogic.makeMove(tileGraphic, lastClickedTile);
-                swapPieces(lastClickedTile, tileGraphic.getRow(), tileGraphic.getColumn());
-            }
-            
             System.out.println(tileGraphic.getCords());
-            lastClickedTile = tileGraphic;
             //tileGraphic.setKing();
-            spots = checkerLogic.moveAvailable(tileGraphic);
-            for (BoardPoint p : spots){
-                highlightTile(p.getCol(), p.getRow());
-            }
-            //System.out.println("size: " + spots.size());
             super.mouseClicked(e);
         }
     }

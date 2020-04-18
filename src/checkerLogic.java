@@ -37,8 +37,9 @@ public class checkerLogic extends CheckerType{
 	public static ArrayList<BoardPoint> moveAvailable(BoardPoint[] board, BoardPoint point)
 	{
 		ArrayList<BoardPoint> list = new ArrayList<BoardPoint>(0);
-				
+		//System.out.println("index:" + point.getIndex());
 		if (point.getPiece() == RED_REGULAR){
+		//	System.out.println("RED");
 			if( point.getIndex() + 9 < 63 && point.getCol() != 7){
 				if( validSpot(board[point.getIndex()+9]) )
 					list.add(board[point.getIndex()+9]);
@@ -49,13 +50,18 @@ public class checkerLogic extends CheckerType{
 			}
 		}
 		else if (point.getPiece() == BLACK_REGULAR){
+		//	System.out.println("BLACK");
 			if( point.getIndex() - 9 > 0 && point.getCol() != 0){
+			//	System.out.println("hello9");
 				if( validSpot(board[point.getIndex()-9]) )
 					list.add(board[point.getIndex()-9]);
 			}			
 			if( point.getIndex() - 7 > 0 && point.getCol() != 7){
+			//	System.out.println("hello7");
+			//	System.out.println("point: " + (point.getIndex()-7));
 				if( validSpot(board[point.getIndex()-7]) )
 					list.add(board[point.getIndex()-7]);
+			//	System.out.println("point: " + point.getIndex());
 			}
 		}
 		else{
@@ -80,151 +86,35 @@ public class checkerLogic extends CheckerType{
 		return list;
 	}
 	
+	//tile1 is usually the full spot
 	public static void makeMove(TileGraphic tile1, TileGraphic tile2)
 	{
 		int index1 = tile1.getRow() * 8 + tile1.getColumn();
 		int index2 = tile2.getRow() * 8 + tile2.getColumn();
+		
+		//System.out.println("index1: " + index1);
+		//System.out.println("index2: " + index2);
 		
 		makeMove(gameFrame.gameBoard.points[index1], gameFrame.gameBoard.points[index2]);
 	}
 	
 	public static void makeMove(BoardPoint point1, BoardPoint point2)
 	{
+		//System.out.println("point1: " + point1.getIndex());
+		//System.out.println("point2: " + point2.getIndex());
+		gameFrame.gameBoard.swap(point1, point2);
 		point1.swap(point2);
 		gameFrame.gameBoard.printBoard();
 	}
 	
 	public static boolean validSpot(BoardPoint point)
 	{
+		System.out.println(point.getPiece());
 		if(point.getPiece() == 0)
 			return true;
 		return false;
 	}
-/*	
-	public static void makeMove(BoardPoint[] board, BoardPoint start, BoardPoint end)
-	{
-		if(validSpot(point)){
-			start.swap(end);
-		}
-	}
-*/	
-	/*
-	public static boolean checkMove(GameBoard game, Player p, int row, int column, int checkFor, boolean king)
-	{
-		//must pass all tests to have a valid move
-		
-		//check if Player 1 (black) or 2 (red)
-		if (p.getPlayerNumber() == 1){
-			
-			if( king ){
-				
-			}
-			else{
-			
-				if (row == 0 || row-1 < 0 )
-					return false;
-				
-				if ( (column == 0 || column-1 < 0) && ( row != 0 || row-1 < 0 ) ){
-					if(!checkRight(game, p, row, column, checkFor, false))
-						return false;
-				}
-				else if ( (column == 7 || column+1 > 7) && ( row != 0 || row-1 < 0 ) ){
-					if(!checkLeft(game, p, row, column, checkFor, false))
-						return false;
-				} 
-				else {
-					if(!(checkLeft(game, p, row, column, checkFor, false) && checkRight(game, p, row, column, checkFor, false) ) )
-						return false;
-				}
-			}
-		}
-		else if (p.getPlayerNumber() == 2){
-			if ( (column == 7 || column+1 > 7) && ( row != 7 || row+1 > 7 ) ){
-				if(!checkLeft(game, p, row, column, checkFor, false))
-					return false;
-			}
-			else if ( (column == 0 || column-1 < 0) && ( row != 7 || row+1 > 7 ) ){
-				if(!checkRight(game, p, row, column, checkFor, false))
-					return false;
-			}
-			else {
-				if(!(checkLeft(game, p, row, column, checkFor, false) && checkRight(game, p, row, column, checkFor, false) ) )
-					return false;
-			}
-		}	
-		return true;
-	}
-	
-	public static boolean checkRight(GameBoard game, Player p, int row, int column, int checkFor, boolean king)
-	{
-		int x = row, y = column;
-		if(p.getPlayerNumber() == 1){
-			if(game.board[x-1][y+1] != checkFor)
-				return false;
-		}
-		else if(p.getPlayerNumber() == 2){
-			if(game.board[x+1][y-1] != checkFor)
-				return false;
-		}
-		if(king){
-			if(game.board[x-1][y+1] != checkFor)
-				return false;
-			if(game.board[x+1][y-1] != checkFor)
-				return false;
-		}
-		return true;
-	}
-	
-	public static boolean checkLeft(GameBoard game, Player p, int row, int column, int checkFor, boolean king)
-	{
-		int x = row, y = column;
-		if(p.getPlayerNumber() == 1){
-			if(game.board[x-1][y-1] == checkFor)
-				return true;
-		}
-		else if(p.getPlayerNumber() == 2){
-			if(game.board[x+1][y+1] == checkFor)
-				return true;
-		}
-		if(king){
-			if(game.board[x-1][y+1] != checkFor)
-				return false;
-			if(game.board[x+1][y-1] != checkFor)
-				return false;
-		}
-		return false;
-	}
-	
-	public static boolean checkForJump(GameBoard game, Player p, int row, int column)
-	{
-		int x = row, y = column;
-		if(p.getPlayerNumber() == 1){
-		
-			if(game.board[x-2][y-2] == 0)
-				return true;
-			else if (game.board[x+2][y-2] == 0)
-				return true;
-		}
-		else if(p.getPlayerNumber() == 2){
-			if(game.board[x+2][y+2] == 0)
-				return true;
-			else if (game.board[x-2][y+2] == 0)
-				return true;
-		}
-		return false;
 
-	}
-	
-	public static void makeMove(GameBoard game, Player p, int row, int column)
-	{
-		int x = row, y = column;
-	}
-	
-	public static void makeJump(GameBoard game, Player p, int row, int column)
-	{
-		int x = row, y = column;
-	}
-	*/
 	public static boolean checkForWin(Player p1, Player p2)
 	{
 		if (p1.getGamePieces() == 0 || p2.getGamePieces() == 0)
@@ -319,40 +209,6 @@ class GameBoard extends CheckerType{
 					points[i] = new BoardPoint(i, x, y);
 			}
 		}
-		
-		/*
-		for(int x = 0; x < board.length; x++){
-			for(int y = 0; y < 8; y++){
-				if(x <= 2){
-					if(x%2 == 0){
-						if(y%2 != 0) {
-							board[x][y] = RED_REGULAR;
-							boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
-						}
-					}
-					else if(x%2 != 0){
-						if(y%2 == 0) {
-							board[x][y] = RED_REGULAR;
-							boardGraphic.addCheckerPieceToTile(Color.RED, y, x);
-						}
-					}
-				}
-				else if(x >= 5){
-					if(x%2 == 0){
-						if(y%2 != 0) {
-							board[x][y] = BLACK_REGULAR;
-							boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
-						}
-					}
-					else if(x%2 != 0){
-						if(y%2 == 0) {
-							board[x][y] = BLACK_REGULAR;
-							boardGraphic.addCheckerPieceToTile(Color.BLACK, y, x);
-						}
-					}
-				}
-			}
-		}*/
 	}
 	
 	public int checkType(int pos)
@@ -382,6 +238,17 @@ class GameBoard extends CheckerType{
 				y = -1;
 			}
 		}
+		
+		//System.out.println();
+		//System.out.println("INDEXs");
+		for(int x = 0, y = 0; x < points.length; x++, y++){
+			System.out.print(points[x].getIndex());
+			System.out.print(" ");
+			if(y == 7){
+				System.out.println();
+				y = -1;
+			}
+		}
 		/*
 		for(int x = 0; x < board.length; x++){
 			for(int y = 0; y < 8; y++){
@@ -390,6 +257,15 @@ class GameBoard extends CheckerType{
 			}
 			System.out.println();
 		}*/
+	}
+	
+	public void swap(BoardPoint point1, BoardPoint point2){
+		//System.out.println(points[point1.getIndex()]);
+		//System.out.println(points[point2.getIndex()]);
+		points[point1.getIndex()] = point2;
+		points[point2.getIndex()] = point1;
+		//System.out.println(points[point1.getIndex()]);
+		//System.out.println(points[point2.getIndex()]);
 	}
 }
 
@@ -406,6 +282,13 @@ class BoardPoint {
 	private int index;
 	private int piece;
 	//private int size;
+	
+	public BoardPoint(BoardPoint point){
+		index = point.index;
+		row = point.row;
+		column = point.column;
+		piece = point.piece;
+	}
 	
 	public BoardPoint(int i, int r, int c){
 		this(i, r, c, 0);
@@ -455,17 +338,23 @@ class BoardPoint {
 		return false;
 	}
 	
-	public void swap(BoardPoint p){
-		BoardPoint temp = this;
+	public void swap(BoardPoint point2){
+		BoardPoint temp = new BoardPoint(this);
 		
-		this.index = p.index;
-		this.row = p.row;
-		this.column = p.column;
-		this.piece = p.piece;
-		p.index = temp.index;
-		p.row = temp.row;
-		p.column = temp.column;
-		p.piece = temp.piece;
+		//System.out.println("this: " + index);
+		//System.out.println("point2: " + point2.index);
+		
+		index = point2.index;
+		row = point2.row;
+		column = point2.column;
+		//this.piece = point2.piece;
+		point2.index = temp.index;
+		point2.row = temp.row;
+		point2.column = temp.column;
+		//point2.piece = temp.piece;
+		
+		//System.out.println("this: " + index);
+		//System.out.println("point2: " + point2.index);
 	}
 	
 	
