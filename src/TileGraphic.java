@@ -11,6 +11,16 @@ public class TileGraphic extends JPanel {
     private Boolean isHighlighted = false;
     private Boolean isKing = false;
 
+    public TileGraphic(TileGraphic tg){
+        backgroundColor = Color.BLACK;
+        setBackground(backgroundColor);
+        hasCheckPiece = tg.hasCheckPiece;
+        isKing = tg.isKing;
+        pieceColor = tg.pieceColor;
+        row = tg.row;
+        col = tg.col;
+    }
+
     public TileGraphic(Color co, int r, int c) {
         backgroundColor = co;
         row = r;
@@ -90,6 +100,12 @@ public class TileGraphic extends JPanel {
         isHighlighted = !isHighlighted;
         repaint();
     }
+    
+    public void resetHighlight(){
+        if(isHighlighted)
+            isHighlighted = false;
+        repaint();
+    }
 
     public void setKing() {
         isKing = true;
@@ -114,22 +130,30 @@ public class TileGraphic extends JPanel {
         return false;
     }
     
-    public void swap(TileGraphic tile){
-        TileGraphic temp = this;
-         
-        this.hasCheckPiece = tile.hasCheckPiece;
-        this.isKing = tile.isKing;
-        this.pieceColor = tile.pieceColor;
-        this.row = tile.row;
-        this.col = tile.col;
+    public void swap(TileGraphic lastTile){
+        TileGraphic temp = new TileGraphic(this);
         
-        tile.hasCheckPiece = temp.hasCheckPiece;
-        tile.isKing = temp.isKing;
-        tile.pieceColor = temp.pieceColor;
-        tile.row = temp.row;
-        tile.col = temp.col;
-        if(!this.hasCheckPiece)
-            makeEmpty();
+        System.out.println("this tile: " + row);
+        System.out.println("last tile: " + lastTile.row);
+        
+        this.hasCheckPiece = lastTile.hasCheckPiece;
+        this.isKing = lastTile.isKing;
+        this.pieceColor = lastTile.pieceColor;
+        //this.row = lastTile.row;
+        //this.col = lastTile.col;
+        
+        lastTile.hasCheckPiece = temp.hasCheckPiece;
+        lastTile.isKing = temp.isKing;
+        lastTile.pieceColor = temp.pieceColor;
+        //lastTile.row = temp.row;
+        //lastTile.col = temp.col;
+        
+        System.out.println("this tile: " + row);
+        System.out.println("last tile: " + lastTile.row);
+
+        if(!lastTile.hasCheckPiece)
+            lastTile.makeEmpty();
+        //this.makeEmpty();
             
         repaint();
     }
