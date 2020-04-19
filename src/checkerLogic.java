@@ -186,9 +186,11 @@ public class checkerLogic extends CheckerType{
 		int index = startPoint.getIndex()-((startPoint.getIndex()-endPoint.getIndex())/2);
 		System.out.println("index: " + index);
 		if (gameFrame.gameBoard.points[index].getPiece() == 1)
-			p1.eliminatePiece();
+			//p1.eliminatePiece();
+			gameFrame.pm.p1.eliminatePiece();
 		else
-			p2.eliminatePiece();
+			//p2.eliminatePiece();
+			gameFrame.pm.p2.eliminatePiece();
 		gameFrame.gameBoard.emptySpot(points[index]);
 		gameFrame.gameBoard.swap(startPoint, endPoint);
 		startPoint.swap(endPoint);

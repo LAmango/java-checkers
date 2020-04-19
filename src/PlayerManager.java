@@ -3,6 +3,9 @@ import java.util.ArrayList;
 
 public class PlayerManager {
     protected ArrayList<Player> players = new ArrayList<>();
+    public String firstPlayer = null;
+    public String secondPlayer = null;
+    public Player p1, p2;
 
     public PlayerManager() throws FileNotFoundException {
         FileInputStream f = new FileInputStream(new File("players.txt"));
@@ -17,6 +20,11 @@ public class PlayerManager {
             } catch (Exception e) {
                 //System.out.println(e);
             }
+    }
+
+    public void resetPlayers() {
+        firstPlayer = null;
+        secondPlayer = null;
     }
 
     public void removePlayer(Player p) throws IOException {
@@ -39,6 +47,11 @@ public class PlayerManager {
 
         savePlayers();
 
+    }
+
+    public void createPlayersForGame() {
+        p1 = new Player(firstPlayer);
+        p2 = new Player(secondPlayer);
     }
 
     public void savePlayers() throws IOException {

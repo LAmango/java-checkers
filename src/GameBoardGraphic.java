@@ -10,7 +10,7 @@ public class GameBoardGraphic extends JPanel {
 
         BorderLayout bl = new BorderLayout();
         setLayout(bl);
-        game = new BoardGraphic();
+        game = new BoardGraphic(frame);
         add(game, BorderLayout.CENTER);
 
         add(bottomGame, BorderLayout.SOUTH);

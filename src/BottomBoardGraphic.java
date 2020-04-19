@@ -19,8 +19,7 @@ public class BottomBoardGraphic extends JPanel {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if("Back".equals(command)){
-                WelcomeScreenGraphic ws = new WelcomeScreenGraphic(frame);
-                frame.setNewPanel(ws);
+                frame.card.previous(frame.RootPanel);
             }
         }
     }

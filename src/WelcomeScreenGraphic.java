@@ -6,34 +6,30 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.Document;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class WelcomeScreenGraphic extends JPanel {
+public class WelcomeScreenGraphic extends JPanel implements Style {
 
     static CardLayout card = new CardLayout();
     static JPanel bottomWelcome = new JPanel();
     static GameGraphic frame;
-    static Boolean playerAdded = false;
-    static String firstPlayerName = null;
-    static String secondPlayerName = null;
-    static JButton startButton;
     static PlayerManager pm;
-
-    static {
-        try {
-            pm = new PlayerManager();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    static Boolean playerAdded = false;
+    static JButton startButton;
+    static PlayerSelectionPanel firstPlayer;
+    static PlayerSelectionPanel secondPlayer;
 
     public WelcomeScreenGraphic(){};
 
     public WelcomeScreenGraphic(GameGraphic f) {
         frame = f;
+        pm = frame.pm;
         // set panel settings
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(new EmptyBorder(10,10,10,10));
@@ -45,19 +41,19 @@ public class WelcomeScreenGraphic extends JPanel {
         JLabel title  = new JLabel("Checkers");
         title.setFont(new Font("Times New Roman", Font.BOLD, 60));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title.setBackground(Color.GRAY);
+        title.setForeground(TITLE_COLOR);
         title.setBorder(new EmptyBorder(5,5,5,5));
 
         // button component
         startButton = new JButton("Start Game");
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startButton.addMouseListener(new NextPanel("p1"));
+        startButton.addActionListener(new P1Panel());
 
         // bottom welcomeScreen cardLayout component
         LeaderBoard leaderboard = new LeaderBoard(pm.players);
 
-        PlayerSelectionPanel firstPlayer = new PlayerSelectionPanel(pm.players, 1, false);
-        PlayerSelectionPanel secondPlayer = new PlayerSelectionPanel(pm.players, 2, true);
+        firstPlayer = new PlayerSelectionPanel(pm.players, 1, false);
+        secondPlayer = new PlayerSelectionPanel(pm.players, 2, true);
 
         bottomWelcome.add("lb", leaderboard);
         bottomWelcome.add("p1", firstPlayer);
@@ -90,94 +86,155 @@ public class WelcomeScreenGraphic extends JPanel {
         graphics.fillRect(getWidth()/2, getHeight()/2, tileWidth, tileHeight);
     }
 
-    public static class NextPanel extends MouseAdapter {
-        private final String panel;
-        private DefaultListModel listModel;
+    public static class P1Panel implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            startButton.setEnabled(false);
+            firstPlayer.next.setEnabled(false);
+            firstPlayer.resetPanel();
+            card.next(bottomWelcome);
+        }
+    }
 
-        public NextPanel(String p, DefaultListModel lm) {
+    public static class P2Panel implements ActionListener {
+
+        PlayerSelectionPanel psl;
+
+        P2Panel(PlayerSelectionPanel p) {
+            psl = p;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            if(playerAdded) {
+                firstPlayer.playerListModel.addElement(pm.firstPlayer);
+                secondPlayer.playerListModel.addElement(pm.firstPlayer);
+                try {
+                    pm.addPlayer(pm.firstPlayer);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
+            }
+            playerAdded = false;
+            secondPlayer.next.setEnabled(false);
+            secondPlayer.resetPanel();
+            card.next(bottomWelcome);
+        }
+    }
+
+    public static class LBPanel implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            startButton.setEnabled(true);
+            card.show(bottomWelcome, "lb");
+        }
+    }
+
+    public static class NextPanel implements ActionListener {
+        private final String panel;
+        private PlayerSelectionPanel psl;
+
+        public NextPanel(String p, PlayerSelectionPanel pan) {
             panel = p;
-            listModel = lm;
+            psl = pan;
         }
 
         public NextPanel(String p) {
             panel = p;
         }
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
+        public void actionPerformed(ActionEvent e) {
             if (panel.equals("lb")) {
                 startButton.setEnabled(true);
-                firstPlayerName = null;
-                secondPlayerName = null;
+                pm.resetPlayers();
             } else {
                 startButton.setEnabled(false);
-                if (playerAdded) {
-                    listModel.addElement(firstPlayerName);
-                    try {
-                        pm.addPlayer(firstPlayerName);
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
+                if (psl.playerNum == 1) {
+                    if (playerAdded) {
+                        psl.playerListModel.addElement(pm.firstPlayer);
+                        try {
+                            pm.addPlayer(pm.firstPlayer);
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
                     }
+                    firstPlayer.resetPanel();
+                } else {
+                    if (playerAdded) {
+                        psl.playerListModel.addElement(pm.secondPlayer);
+                        try {
+                            pm.addPlayer(pm.secondPlayer);
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
+                    }
+                    secondPlayer.resetPanel();
                 }
             }
             playerAdded = false;
             card.show(bottomWelcome, panel);
-            super.mouseClicked(e);
         }
     }
 
-    public static class StartGame extends MouseAdapter {
+    public static class StartGame implements ActionListener {
         private DefaultListModel listModel;
 
         StartGame(DefaultListModel lm) {
             listModel = lm;
         }
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
+        public void actionPerformed(ActionEvent e) {
             if(playerAdded) {
-                listModel.addElement(secondPlayerName);
+                listModel.addElement(pm.secondPlayer);
                 try {
-                    pm.addPlayer(secondPlayerName);
+                    pm.addPlayer(pm.secondPlayer);
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             }
             playerAdded = false;
             card.show(bottomWelcome, "lb");
+            startButton.setEnabled(true);
+            pm.createPlayersForGame();
             frame.startGame();
-            super.mouseClicked(e);
         }
     }
 
     public static class PlayerListListener implements ListSelectionListener {
         private final JTextField textfield;
-        private final JLabel hintText;
+        private JLabel hintText;
         private final JList players;
         private final int playerNum;
+        private PlayerSelectionPanel panel;
 
-        PlayerListListener(JTextField tf, JList p, JLabel h, int pl) {
+        PlayerListListener(JTextField tf, JList p, JLabel h, int pl, PlayerSelectionPanel pan) {
             textfield = tf;
             players = p;
             hintText = h;
             playerNum = pl;
+            panel = pan;
         }
 
         public void valueChanged(ListSelectionEvent e) {
+            if (players.getSelectedValue() == null) return;
             String selectedName = players.getSelectedValue().toString();
             textfield.setText(selectedName);
             playerAdded = false;
             if (playerNum == 1) {
-                firstPlayerName = selectedName;
+                firstPlayer.next.setEnabled(true);
+                pm.firstPlayer = selectedName;
             } else if (playerNum == 2) {
-                if (firstPlayerName.equals(selectedName)) {
+                if (pm.firstPlayer.equals(selectedName)) {
                     System.out.println("Selected the same player! " + playerNum);
-                    hintText.setBackground(Color.RED);
+                    hintText.setForeground(Style.ERROR);
                     hintText.setText("That player has already been chosen!");
+                    panel.next.setEnabled(false);
                 } else {
-                    secondPlayerName = selectedName;
-                    hintText.setBackground(Color.BLACK);
+                    pm.secondPlayer = selectedName;
+                    hintText.setForeground(Color.BLACK);
                     hintText.setText("Select a player from the list or type one in yourself!");
+                    panel.next.setEnabled(true);
                 }
             }
         }
@@ -196,9 +253,16 @@ public class WelcomeScreenGraphic extends JPanel {
         public void update(DocumentEvent e) {
             playerAdded = true;
             if (playerNum == 1) {
-                firstPlayerName = textField.getText();
+                firstPlayer.next.setEnabled(true);
+                pm.firstPlayer = textField.getText();
             } else {
-                secondPlayerName = textField.getText();
+                secondPlayer.next.setEnabled(true);
+                pm.secondPlayer = textField.getText();
+            }
+            if (textField.getText().length() == 0) {
+                firstPlayer.next.setEnabled(false);
+                secondPlayer.next.setEnabled(false);
+                playerAdded = false;
             }
         }
 

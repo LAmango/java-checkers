@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+import java.io.FileNotFoundException;
 
 /**************************************************
  * GameGraphic                                    *
@@ -24,12 +26,24 @@ public class GameGraphic extends JFrame {
 
     private GameBoardGraphic gb;
     public GameBoard gameBoard;
+    public PlayerManager pm;
+    public WelcomeScreenGraphic welcome;
+    public CardLayout card = new CardLayout();
+    public JPanel RootPanel;
 
     public GameGraphic() {
-        WelcomeScreenGraphic welcome = new WelcomeScreenGraphic(this);
+        try {
+            pm = new PlayerManager();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        RootPanel = new JPanel();
+        RootPanel.setLayout(card);
+        welcome = new WelcomeScreenGraphic(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,500);
-        add(welcome);
+        RootPanel.add(welcome);
+        add(RootPanel);
         setVisible(true);
     }
 
@@ -40,9 +54,17 @@ public class GameGraphic extends JFrame {
         getContentPane().validate();
     }
 
+    public void backToWelcome() {
+        getContentPane().removeAll();
+        getContentPane().invalidate();
+        getContentPane().add(welcome);
+        getContentPane().validate();
+    }
+
     public void startGame() {
         gb = new GameBoardGraphic(this);
-        setNewPanel(gb);
+        RootPanel.add(gb);
+        card.next(RootPanel);
         gameBoard = new GameBoard(gb.getBoardGraphic());
     }
 }

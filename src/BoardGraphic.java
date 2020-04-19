@@ -11,8 +11,10 @@ public class BoardGraphic extends JPanel {
     protected GameBoard gameBoard;
     protected ArrayList<BoardPoint> spots;
     protected ArrayList<BoardPoint> jumps;
+    public GameGraphic frame;
 
-    public BoardGraphic() {
+    public BoardGraphic(GameGraphic f) {
+        frame = f;
         spots = new ArrayList<BoardPoint>(0);
         jumps = new ArrayList<BoardPoint>(0);
         lastClickedTile = new TileGraphic(Color.BLACK, -1, -1);
@@ -40,6 +42,14 @@ public class BoardGraphic extends JPanel {
             col = 0;
             row++;
         }
+    }
+
+    public Player getPlayer1() {
+        return frame.pm.p1;
+    }
+
+    public Player getPlayer2() {
+        return frame.pm.p2;
     }
 
     public void addCheckerPieceToTile(Color color, int row, int col) {
