@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.Serializable;
 import java.util.*;
 
 /*
@@ -123,8 +124,8 @@ public class checkerLogic extends CheckerType{
 	}
 	
 	public static void main(String[] args) {
-		Player p1 = new Player(1);
-		Player p2 = new Player(2);
+		Player p1 = new Player("Lucas");
+		Player p2 = new Player("Steven");
 		gameFrame = new GameGraphic();
 		//moveAvailable(gameFrame.gameBoard.points, gameFrame.gameBoard.points[3]);
 		//System.out.println(checkForMove(gameFrame.gameBoard, p1, 5 , 4));
@@ -134,14 +135,21 @@ public class checkerLogic extends CheckerType{
 
 //player class
 	
-class Player {
+class Player implements Serializable {
 		
 	protected int playerNumber;    //player 1 (Black) or 2 (Red)
 	private int gamePieces = 12;
+	protected String name;
+	protected int wins;
 	
-	public Player(int num)
+	public Player(String n)
 	{
-		setPlayerNumber(num);
+		name = n;
+		wins = 0;
+	}
+
+	public void updateWins() {
+		wins++;
 	}
 	
 	//Player 1 or 2
@@ -157,7 +165,11 @@ class Player {
 	
 	public int getGamePieces()
 	{ return gamePieces; }
-	
+
+	@Override
+	public String toString() {
+		return  String.format("%-12s%12d\n", name, wins);
+	}
 }
 
 class GameBoard extends CheckerType{
