@@ -11,6 +11,7 @@ public class TileGraphic extends JPanel {
     private Boolean isHighlighted = false;
     private Boolean isKing = false;
 
+    //copy constructor
     public TileGraphic(TileGraphic tg){
         backgroundColor = Color.BLACK;
         setBackground(backgroundColor);
@@ -122,6 +123,10 @@ public class TileGraphic extends JPanel {
     
     public boolean getKing(){
         return isKing;
+    }
+    
+    public Color getColorPiece(){
+        return pieceColor;
     }
     
     public boolean equalTile(TileGraphic tile){
