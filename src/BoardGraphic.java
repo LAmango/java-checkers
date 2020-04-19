@@ -10,9 +10,11 @@ public class BoardGraphic extends JPanel {
     protected TileGraphic lastClickedTile;
     protected GameBoard gameBoard;
     protected ArrayList<BoardPoint> spots;
+    protected ArrayList<BoardPoint> jumps;
 
     public BoardGraphic() {
         spots = new ArrayList<BoardPoint>(0);
+        jumps = new ArrayList<BoardPoint>(0);
         lastClickedTile = new TileGraphic(Color.BLACK, -1, -1);
         gridBoard = new GridLayout(8,8);
         setLayout(gridBoard);
@@ -66,9 +68,10 @@ public class BoardGraphic extends JPanel {
         t.setKing();
     }
     
-    public void swapPieces(TileGraphic tile2, int row, int col){
-        TileGraphic t = this.getTile(row, col);
-        t.swap(tile2);
+    public void emptyCheckerPiece(int row, int col){
+        TileGraphic t = this.getTile(col, row);
+        //System.out.println("CORDS: " + t.getCords());
+        t.makeEmpty();
     }
 
     public TileGraphic getTile(int row, int col) {
@@ -85,22 +88,35 @@ public class BoardGraphic extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            System.out.println("NEW CLICK!!!");
+            
             resetHighlight();
+            System.out.println("jumps size1: " + jumps.size());
             spots.clear();
             if (tileGraphic.isEmpty()){
-                checkerLogic.makeMove(lastClickedTile, tileGraphic);
+                if(jumps.isEmpty())
+                    checkerLogic.makeMove(lastClickedTile, tileGraphic);
+                else{
+                    checkerLogic.makeJump(lastClickedTile, tileGraphic);
+                    emptyCheckerPiece((tileGraphic.getRow()+lastClickedTile.getRow())/2, (tileGraphic.getColumn()+lastClickedTile.getColumn())/2);
+                }
                 tileGraphic.swap(lastClickedTile);
-                /*
-                for (BoardPoint p : spots){
-                    resetHighlight();
-                }*/
             }
             else{
                 spots = checkerLogic.moveAvailable(tileGraphic);
+                jumps = checkerLogic.jumpAvailable(tileGraphic);
                 System.out.println("size: " + spots.size());
+                System.out.println("jumps size2: " + jumps.size());
                 lastClickedTile = tileGraphic;
-                for (BoardPoint p : spots){
-                    highlightTile(p.getCol(), p.getRow());
+                if(!jumps.isEmpty()){
+                    for (BoardPoint p : jumps){
+                        highlightTile(p.getCol(), p.getRow());
+                    }
+                }
+                else {
+                    for (BoardPoint p : spots){
+                        highlightTile(p.getCol(), p.getRow());
+                    }
                 }
             }
             System.out.println(tileGraphic.getCords());
