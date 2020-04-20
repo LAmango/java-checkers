@@ -11,9 +11,11 @@ public class BoardGraphic extends JPanel {
     protected GameBoard gameBoard;
     protected ArrayList<BoardPoint> spots;
     protected ArrayList<BoardPoint> jumps;
+    protected int turn;
     public GameGraphic frame;
 
     public BoardGraphic(GameGraphic f) {
+        turn = 1;
         frame = f;
         spots = new ArrayList<BoardPoint>(0);
         jumps = new ArrayList<BoardPoint>(0);
@@ -102,7 +104,8 @@ public class BoardGraphic extends JPanel {
             resetHighlight();
             System.out.println("jumps size1: " + jumps.size());
             spots.clear();
-            if (tileGraphic.isEmpty()){
+            //if(tileGraphic)
+            if (tileGraphic.isEmpty() && tileGraphic.getBackgroundColor() != Color.RED){
                 if(jumps.isEmpty())
                     checkerLogic.makeMove(lastClickedTile, tileGraphic);
                 else{
@@ -110,21 +113,24 @@ public class BoardGraphic extends JPanel {
                     emptyCheckerPiece((tileGraphic.getRow()+lastClickedTile.getRow())/2, (tileGraphic.getColumn()+lastClickedTile.getColumn())/2);
                 }
                 tileGraphic.swap(lastClickedTile);
+                turn = (turn == 1) ? 2 : 1;
             }
             else{
-                spots = checkerLogic.moveAvailable(tileGraphic);
-                jumps = checkerLogic.jumpAvailable(tileGraphic);
-                System.out.println("size: " + spots.size());
-                System.out.println("jumps size2: " + jumps.size());
-                lastClickedTile = tileGraphic;
-                if(!jumps.isEmpty()){
-                    for (BoardPoint p : jumps){
-                        highlightTile(p.getCol(), p.getRow());
+                if( (tileGraphic.getColorPiece() == Color.BLACK && turn == 1) || (tileGraphic.getColorPiece() == Color.RED && turn == 2) ){
+                    spots = checkerLogic.moveAvailable(tileGraphic);
+                    jumps = checkerLogic.jumpAvailable(tileGraphic);
+                    System.out.println("size: " + spots.size());
+                    System.out.println("jumps size2: " + jumps.size());
+                    lastClickedTile = tileGraphic;
+                    if(!jumps.isEmpty()){
+                        for (BoardPoint p : jumps){
+                            highlightTile(p.getCol(), p.getRow());
+                        }
                     }
-                }
-                else {
-                    for (BoardPoint p : spots){
-                        highlightTile(p.getCol(), p.getRow());
+                    else {
+                        for (BoardPoint p : spots){
+                            highlightTile(p.getCol(), p.getRow());
+                        }
                     }
                 }
             }

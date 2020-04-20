@@ -102,11 +102,11 @@ public class checkerLogic extends CheckerType{
 		if (point.getPiece() == RED_REGULAR){
 		//	System.out.println("RED");
 			if( point.getIndex() + (9*jump) < 63 && point.getCol() != 7){
-				if( differentPiece(point, board[point.getIndex()+(9*jump)]) )
+				if( differentPiece(point, board[point.getIndex()+(9*jump)]) && validSpot(board[point.getIndex()+(9*(jump+1))]))
 					list.add(board[point.getIndex()+( 9*(jump+1) )]);
 			}
 			if( point.getIndex() + (7*jump) < 63 && point.getCol() != 0){
-				if( differentPiece(point, board[point.getIndex()+(7*jump)]) )
+				if( differentPiece(point, board[point.getIndex()+(7*jump)]) && validSpot(board[point.getIndex()+(7*(jump+1))]))
 					list.add(board[point.getIndex()+(7*(jump+1))]);
 			}
 		}
@@ -114,32 +114,32 @@ public class checkerLogic extends CheckerType{
 		//	System.out.println("BLACK");
 			if( point.getIndex() - (9*jump) > 0 && point.getCol() != 0){
 			//	System.out.println("hello9");
-				if( differentPiece(point, board[point.getIndex()-(9*jump)]) )
+				if( differentPiece(point, board[point.getIndex()-(9*jump)]) && validSpot(board[point.getIndex()-(9*(jump+1))]))
 					list.add(board[point.getIndex()-(9*(jump+1))]);
 			}			
 			if( point.getIndex() - (7*jump) > 0 && point.getCol() != 7){
 			//	System.out.println("hello7");
 			//	System.out.println("point: " + (point.getIndex()-7));
-				if( differentPiece(point, board[point.getIndex()-(7*jump)]) )
+				if( differentPiece(point, board[point.getIndex()-(7*jump)]) && validSpot(board[point.getIndex()-(7*(jump+1))]))
 					list.add(board[point.getIndex()-(7* (jump+1))]);
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
 		else{
 			if( point.getIndex() + (9*jump) < 63 ){
-				if( differentPiece(point, board[point.getIndex()+(9*jump)]) )
+				if( differentPiece(point, board[point.getIndex()+(9*jump)]) && validSpot(board[point.getIndex()+(9*(jump+1))]))
 					list.add(board[point.getIndex()+(9*(jump+1))]);
 			}
 			if( point.getIndex() + (7*jump) < 63 ){
-				if( differentPiece(point, board[point.getIndex()+(7*jump)]) )
+				if( differentPiece(point, board[point.getIndex()+(7*jump)]) && validSpot(board[point.getIndex()+(7*(jump+1))]))
 					list.add(board[point.getIndex()+(7*(jump+1))]);
 			}
 			if( point.getIndex() - (9*jump) > 0 ){
-				if( differentPiece(point, board[point.getIndex()-(9*jump)]) )
+				if( differentPiece(point, board[point.getIndex()-(9*jump)]) && validSpot(board[point.getIndex()-(9*(jump+1))]))
 					list.add(board[point.getIndex()-(9*(jump+1))]);
 			}			
 			if( point.getIndex() - (7*jump) > 0 ){
-				if( differentPiece(point, board[point.getIndex()-(7*jump)]) )
+				if( differentPiece(point, board[point.getIndex()-(7*jump)]) && validSpot(board[point.getIndex()-(7*(jump+1))]))
 					list.add(board[point.getIndex()-(7*(jump+1))]);
 			}
 		}
@@ -186,10 +186,8 @@ public class checkerLogic extends CheckerType{
 		int index = startPoint.getIndex()-((startPoint.getIndex()-endPoint.getIndex())/2);
 		System.out.println("index: " + index);
 		if (gameFrame.gameBoard.points[index].getPiece() == 1)
-			//p1.eliminatePiece();
 			gameFrame.pm.p1.eliminatePiece();
 		else
-			//p2.eliminatePiece();
 			gameFrame.pm.p2.eliminatePiece();
 		gameFrame.gameBoard.emptySpot(points[index]);
 		gameFrame.gameBoard.swap(startPoint, endPoint);
