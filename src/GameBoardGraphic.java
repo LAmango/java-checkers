@@ -7,6 +7,7 @@ public class GameBoardGraphic extends JPanel {
 
     public GameBoardGraphic(GameGraphic frame) {
         BottomBoardGraphic bottomGame = new BottomBoardGraphic(frame);
+        TopBoardGraphic topGame = new TopBoardGraphic(frame.pm.p1, frame.pm.p2);
 
         BorderLayout bl = new BorderLayout();
         setLayout(bl);
@@ -14,6 +15,8 @@ public class GameBoardGraphic extends JPanel {
         add(game, BorderLayout.CENTER);
 
         add(bottomGame, BorderLayout.SOUTH);
+
+        add(topGame, BorderLayout.NORTH);
     }
 
     public BoardGraphic getBoardGraphic() {

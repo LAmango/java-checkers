@@ -52,7 +52,7 @@ public class PlayerSelectionPanel extends JPanel implements Style {
         // buttons
         Box buttons = new Box(BoxLayout.X_AXIS);
         next = new JButton(start ? "Start" : "Next");
-        next.addActionListener(start ? new WelcomeScreenGraphic.StartGame(playerListModel) : new WelcomeScreenGraphic.P2Panel(this));
+        next.addActionListener(start ? new WelcomeScreenGraphic.StartGame() : new WelcomeScreenGraphic.P2Panel());
         buttons.add(next);
 
         cancel = new JButton("Cancel");

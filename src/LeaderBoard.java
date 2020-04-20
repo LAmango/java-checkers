@@ -5,8 +5,12 @@ import java.util.ArrayList;
 
 public class LeaderBoard extends JPanel implements Style {
 
+    public DefaultListModel playerListModel;
+    public JLabel lb_title;
+    public JList playerList;
+
     public LeaderBoard(ArrayList<Player> players) {
-        DefaultListModel playerListModel = new DefaultListModel();
+        playerListModel = new DefaultListModel();
 
         for (Player p: players) {
             playerListModel.addElement(p);
@@ -17,14 +21,14 @@ public class LeaderBoard extends JPanel implements Style {
         setOpaque(true);
 
         // title
-        JLabel lb_title = new JLabel("Leaderboard");
+        lb_title = new JLabel("Leaderboard");
         lb_title.setFont(new Font("Time New Roman", Font.BOLD, 20));
         add(lb_title);
         lb_title.setForeground(TITLE_COLOR);
         add(Box.createVerticalStrut(10));
 
         // leaderboard list
-        JList playerList = new JList(playerListModel);
+        playerList = new JList(playerListModel);
         playerList.setBorder(BorderFactory.createTitledBorder("Players"));
         playerList.setBackground(BACKGROUND);
         playerList.setMaximumSize(new Dimension(Integer.MAX_VALUE, playerList.getPreferredSize().height));

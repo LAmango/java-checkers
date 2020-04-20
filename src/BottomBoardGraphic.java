@@ -10,6 +10,7 @@ public class BottomBoardGraphic extends JPanel {
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ButtonListener());
         JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(new ButtonListener());
         add(backButton);
         add(saveButton);
     }
@@ -20,6 +21,8 @@ public class BottomBoardGraphic extends JPanel {
             String command = e.getActionCommand();
             if("Back".equals(command)){
                 frame.card.previous(frame.RootPanel);
+            } else if ("Save".equals(command)) {
+                TopBoardGraphic.togglePlayerTurn();
             }
         }
     }

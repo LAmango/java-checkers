@@ -24,6 +24,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
     static JButton startButton;
     static PlayerSelectionPanel firstPlayer;
     static PlayerSelectionPanel secondPlayer;
+    static LeaderBoard leaderBoard;
 
     public WelcomeScreenGraphic(){};
 
@@ -50,12 +51,12 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         startButton.addActionListener(new P1Panel());
 
         // bottom welcomeScreen cardLayout component
-        LeaderBoard leaderboard = new LeaderBoard(pm.players);
+        leaderBoard = new LeaderBoard(pm.players);
 
         firstPlayer = new PlayerSelectionPanel(pm.players, 1, false);
         secondPlayer = new PlayerSelectionPanel(pm.players, 2, true);
 
-        bottomWelcome.add("lb", leaderboard);
+        bottomWelcome.add("lb", leaderBoard);
         bottomWelcome.add("p1", firstPlayer);
         bottomWelcome.add("p2", secondPlayer);
 
@@ -98,17 +99,12 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
 
     public static class P2Panel implements ActionListener {
 
-        PlayerSelectionPanel psl;
-
-        P2Panel(PlayerSelectionPanel p) {
-            psl = p;
-        }
-
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             if(playerAdded) {
                 firstPlayer.playerListModel.addElement(pm.firstPlayer);
                 secondPlayer.playerListModel.addElement(pm.firstPlayer);
+                leaderBoard.playerListModel.addElement(pm.firstPlayer);
                 try {
                     pm.addPlayer(pm.firstPlayer);
                 } catch (IOException ioException) {
@@ -131,62 +127,13 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         }
     }
 
-    public static class NextPanel implements ActionListener {
-        private final String panel;
-        private PlayerSelectionPanel psl;
-
-        public NextPanel(String p, PlayerSelectionPanel pan) {
-            panel = p;
-            psl = pan;
-        }
-
-        public NextPanel(String p) {
-            panel = p;
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            if (panel.equals("lb")) {
-                startButton.setEnabled(true);
-                pm.resetPlayers();
-            } else {
-                startButton.setEnabled(false);
-                if (psl.playerNum == 1) {
-                    if (playerAdded) {
-                        psl.playerListModel.addElement(pm.firstPlayer);
-                        try {
-                            pm.addPlayer(pm.firstPlayer);
-                        } catch (IOException ioException) {
-                            ioException.printStackTrace();
-                        }
-                    }
-                    firstPlayer.resetPanel();
-                } else {
-                    if (playerAdded) {
-                        psl.playerListModel.addElement(pm.secondPlayer);
-                        try {
-                            pm.addPlayer(pm.secondPlayer);
-                        } catch (IOException ioException) {
-                            ioException.printStackTrace();
-                        }
-                    }
-                    secondPlayer.resetPanel();
-                }
-            }
-            playerAdded = false;
-            card.show(bottomWelcome, panel);
-        }
-    }
-
     public static class StartGame implements ActionListener {
-        private DefaultListModel listModel;
-
-        StartGame(DefaultListModel lm) {
-            listModel = lm;
-        }
 
         public void actionPerformed(ActionEvent e) {
             if(playerAdded) {
-                listModel.addElement(pm.secondPlayer);
+                secondPlayer.playerListModel.addElement(pm.secondPlayer);
+                firstPlayer.playerListModel.addElement(pm.secondPlayer);
+                leaderBoard.playerListModel.addElement(pm.secondPlayer);
                 try {
                     pm.addPlayer(pm.secondPlayer);
                 } catch (IOException ioException) {
