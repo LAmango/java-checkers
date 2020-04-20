@@ -22,7 +22,6 @@ public class BoardGraphic extends JPanel {
         setLayout(gridBoard);
         int col =  0;
         int row  = 0;
-        TileGraphic[][] pos = new TileGraphic[8][8];
         for (int i = 0; i < 8; i++) {
             if (i%2 == 0) {
                 for (int j = 0; j < 8; j++) {
