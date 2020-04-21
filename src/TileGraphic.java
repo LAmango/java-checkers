@@ -94,6 +94,7 @@ public class TileGraphic extends JPanel {
     
     public void makeEmpty(){
         hasCheckPiece = false;
+        isKing = false;
         repaint();
     }
 
@@ -103,9 +104,10 @@ public class TileGraphic extends JPanel {
     }
     
     public void resetHighlight(){
-        if(isHighlighted)
+        if(isHighlighted){
             isHighlighted = false;
-        repaint();
+            repaint();
+        }
     }
 
     public void setKing() {

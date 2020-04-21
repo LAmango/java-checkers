@@ -73,7 +73,7 @@ public class checkerLogic extends CheckerType{
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
-		else{
+		else if (point.getPiece() == 3 || point.getPiece() == 4){
 			if( point.getIndex() + (9*jump) <= 63 ){
 				if( validSpot(board[point.getIndex()+(9*jump)]) )
 					list.add(board[point.getIndex()+(9*jump)]);
@@ -125,7 +125,7 @@ public class checkerLogic extends CheckerType{
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
-		else{
+		else if (point.getPiece() == 3 || point.getPiece() == 4){
 			System.out.println("index: " + point.getIndex());
 			if( point.getIndex() + (9*jump) <= 63 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() + (9*(jump+1)) <= 63){
 				if( differentPiece(point, board[point.getIndex()+(9*jump)]) && validSpot(board[point.getIndex()+(9*(jump+1))]))
@@ -195,10 +195,12 @@ public class checkerLogic extends CheckerType{
 		BoardPoint[] points = gameFrame.gameBoard.points;
 		int index = startPoint.getIndex()-((startPoint.getIndex()-endPoint.getIndex())/2);
 		System.out.println("index: " + index);
-		if (gameFrame.gameBoard.points[index].getPiece() == 1)
+		
+		if (gameFrame.gameBoard.points[index].getPiece() == 1 || points[index].getPiece() == 3)
 			gameFrame.pm.p1.eliminatePiece();
-		else
+		else if (points[index].getPiece() == 2 || points[index].getPiece() == 4)
 			gameFrame.pm.p2.eliminatePiece();
+			
 		gameFrame.gameBoard.emptySpot(points[index]);
 		gameFrame.gameBoard.swap(startPoint, endPoint);
 		startPoint.swap(endPoint);
@@ -225,8 +227,14 @@ public class checkerLogic extends CheckerType{
 	
 	public static boolean differentPiece(BoardPoint startPoint, BoardPoint diffPoint)
 	{
-		if ( (startPoint.getPiece() != diffPoint.getPiece()) && diffPoint.getPiece() != 0)
-			return true;
+		if ( (startPoint.getPiece() != diffPoint.getPiece()) && diffPoint.getPiece() != 0){
+			if( startPoint.getPiece() == 3 )
+				return (diffPoint.getPiece() != 1) ? true : false;
+			else if ( startPoint.getPiece() == 4 )
+				return (diffPoint.getPiece() != 2) ? true : false;
+			else
+				return true;
+		}
 		return false;
 	}
 

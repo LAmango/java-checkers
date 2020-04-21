@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 
 public class GameGraphic extends JFrame {
 
-    private GameBoardGraphic gb = new GameBoardGraphic();
+    private GameBoardGraphic gb;
     public GameBoard gameBoard;
     public PlayerManager pm;
     public WelcomeScreenGraphic welcome;
@@ -32,6 +32,7 @@ public class GameGraphic extends JFrame {
     public JPanel RootPanel;
 
     public GameGraphic() {
+        gb = new GameBoardGraphic();
         try {
             pm = new PlayerManager();
         } catch (FileNotFoundException e) {
