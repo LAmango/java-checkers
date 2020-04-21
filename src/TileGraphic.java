@@ -135,6 +135,12 @@ public class TileGraphic extends JPanel {
         return false;
     }
     
+    public boolean equals(BoardPoint p){
+        if(this.row == p.getRow() && this.col == p.getCol())
+            return true;
+        return false;
+    }
+    
     public void swap(TileGraphic lastTile){
         TileGraphic temp = new TileGraphic(this);
         

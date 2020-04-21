@@ -100,12 +100,23 @@ public class BoardGraphic extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             System.out.println("NEW CLICK!!!");
-            
+            System.out.println(tileGraphic.getCords());
+
             resetHighlight();
-            System.out.println("jumps size1: " + jumps.size());
-            spots.clear();
+            //System.out.println("jumps size1: " + jumps.size());
+            boolean match = false;
+            for (BoardPoint p : spots){
+                if(tileGraphic.equals(p))
+                    match = true;
+            }
+            for (BoardPoint p : jumps){
+                if(tileGraphic.equals(p))
+                    match = true;
+            }
+            //spots.clear();
+            //jumps.clear();
             //if(tileGraphic)
-            if (tileGraphic.isEmpty() && tileGraphic.getBackgroundColor() != Color.RED){
+            if (match == true && tileGraphic.getBackgroundColor() == Color.BLACK){
                 if(jumps.isEmpty())
                     checkerLogic.makeMove(lastClickedTile, tileGraphic);
                 else{
@@ -117,10 +128,11 @@ public class BoardGraphic extends JPanel {
             }
             else{
                 if( (tileGraphic.getColorPiece() == Color.BLACK && turn == 1) || (tileGraphic.getColorPiece() == Color.RED && turn == 2) ){
-                    spots = checkerLogic.moveAvailable(tileGraphic);
                     jumps = checkerLogic.jumpAvailable(tileGraphic);
-                    System.out.println("size: " + spots.size());
-                    System.out.println("jumps size2: " + jumps.size());
+                    if(jumps.isEmpty())
+                        spots = checkerLogic.moveAvailable(tileGraphic);
+                    //System.out.println("size: " + spots.size());
+                    //System.out.println("jumps size2: " + jumps.size());
                     lastClickedTile = tileGraphic;
                     if(!jumps.isEmpty()){
                         for (BoardPoint p : jumps){
@@ -134,7 +146,6 @@ public class BoardGraphic extends JPanel {
                     }
                 }
             }
-            System.out.println(tileGraphic.getCords());
             //tileGraphic.setKing();
             super.mouseClicked(e);
         }
