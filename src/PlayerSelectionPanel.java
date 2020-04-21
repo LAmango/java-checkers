@@ -42,7 +42,10 @@ public class PlayerSelectionPanel extends JPanel implements Style {
         players.getSelectionModel().addListSelectionListener(new WelcomeScreenGraphic.PlayerListListener(textField, players, hint, playerNum, this));
         players.setBorder(BorderFactory.createTitledBorder("Player Selection"));
         players.setMaximumSize(new Dimension(Integer.MAX_VALUE, players.getPreferredSize().height));
-        add(players);
+        JScrollPane scroll = new JScrollPane();
+        scroll.setViewportView(players);
+        scroll.setBorder(BorderFactory.createEmptyBorder());
+        add(scroll);
         add(Box.createVerticalStrut(10));
 
         hint.setAlignmentX(Component.CENTER_ALIGNMENT);

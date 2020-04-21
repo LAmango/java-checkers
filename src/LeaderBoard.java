@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LeaderBoard extends JPanel implements Style {
 
@@ -11,6 +12,7 @@ public class LeaderBoard extends JPanel implements Style {
 
     public LeaderBoard(ArrayList<Player> players) {
         playerListModel = new DefaultListModel();
+        Collections.sort(players);
 
         for (Player p: players) {
             playerListModel.addElement(p);
@@ -33,6 +35,20 @@ public class LeaderBoard extends JPanel implements Style {
         playerList.setBackground(BACKGROUND);
         playerList.setMaximumSize(new Dimension(Integer.MAX_VALUE, playerList.getPreferredSize().height));
         playerList.setFont(new Font("Monospaced", Font.BOLD, 12));
-        add(playerList);
+        JScrollPane scroll = new JScrollPane();
+        scroll.setViewportView(playerList);
+        scroll.setBorder(BorderFactory.createEmptyBorder());
+        add(scroll);
+        add(Box.createVerticalGlue());
+    }
+
+    public void updateBoard(ArrayList<Player> players) {
+        playerListModel.removeAllElements();
+
+        Collections.sort(players);
+
+        for (Player p: players) {
+            playerListModel.addElement(p);
+        }
     }
 }

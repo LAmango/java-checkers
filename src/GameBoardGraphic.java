@@ -5,6 +5,8 @@ public class GameBoardGraphic extends JPanel {
 
     private BoardGraphic game;
 
+    public GameBoardGraphic(){};
+
     public GameBoardGraphic(GameGraphic frame) {
         BottomBoardGraphic bottomGame = new BottomBoardGraphic(frame);
         TopBoardGraphic topGame = new TopBoardGraphic(frame.pm.p1, frame.pm.p2);

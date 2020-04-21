@@ -52,6 +52,8 @@ public class PlayerManager {
     public void createPlayersForGame() {
         p1 = new Player(firstPlayer);
         p2 = new Player(secondPlayer);
+        firstPlayer = null;
+        secondPlayer = null;
     }
 
     public void savePlayers() throws IOException {

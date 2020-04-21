@@ -1,9 +1,13 @@
+import jdk.nashorn.internal.scripts.JO;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class BottomBoardGraphic extends JPanel {
-    public GameGraphic frame;
+    GameGraphic frame;
+
     public BottomBoardGraphic(GameGraphic f) {
         frame = f;
 
@@ -20,7 +24,17 @@ public class BottomBoardGraphic extends JPanel {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if("Back".equals(command)){
-                frame.card.previous(frame.RootPanel);
+                int n = JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?\nThe current game will be lost forever!", "Quit Game", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                System.out.println(n);
+                if (n == 0) {
+                    try {
+                        frame.pm.updatePlayerWins(frame.pm.p1.name);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    WelcomeScreenGraphic.updateLeaderBoard();
+                    frame.card.previous(frame.RootPanel);
+                }
             } else if ("Save".equals(command)) {
                 TopBoardGraphic.togglePlayerTurn();
             }

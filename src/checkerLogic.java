@@ -247,7 +247,7 @@ public class checkerLogic extends CheckerType{
 
 //player class
 	
-class Player implements Serializable {
+class Player implements Serializable, Comparable<Player> {
 		
 	protected int playerNumber;    //player 1 (Black) or 2 (Red)
 	private int gamePieces = 12;
@@ -281,6 +281,11 @@ class Player implements Serializable {
 	@Override
 	public String toString() {
 		return  String.format("%-12s%12d\n", name, wins);
+	}
+
+	@Override
+	public int compareTo(Player player) {
+		return (Integer.compare(player.wins, this.wins));
 	}
 }
 

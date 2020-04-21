@@ -26,8 +26,6 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
     static PlayerSelectionPanel secondPlayer;
     static LeaderBoard leaderBoard;
 
-    public WelcomeScreenGraphic(){};
-
     public WelcomeScreenGraphic(GameGraphic f) {
         frame = f;
         pm = frame.pm;
@@ -85,6 +83,10 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         graphics.fillRect(0, getHeight()/2, tileWidth, tileHeight);
         graphics.setColor(Color.RED);
         graphics.fillRect(getWidth()/2, getHeight()/2, tileWidth, tileHeight);
+    }
+
+    public static void updateLeaderBoard() {
+        leaderBoard.updateBoard(frame.pm.players);
     }
 
     public static class P1Panel implements ActionListener {

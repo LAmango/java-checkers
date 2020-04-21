@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 
 public class GameGraphic extends JFrame {
 
-    private GameBoardGraphic gb;
+    private GameBoardGraphic gb = new GameBoardGraphic();
     public GameBoard gameBoard;
     public PlayerManager pm;
     public WelcomeScreenGraphic welcome;
@@ -44,6 +44,7 @@ public class GameGraphic extends JFrame {
         setSize(500,500);
         RootPanel.add(welcome);
         add(RootPanel);
+        //add(welcome);
         setVisible(true);
     }
 
@@ -62,9 +63,11 @@ public class GameGraphic extends JFrame {
     }
 
     public void startGame() {
+        RootPanel.remove(gb);
         gb = new GameBoardGraphic(this);
         RootPanel.add(gb);
         card.next(RootPanel);
+        //setNewPanel(gb);
         gameBoard = new GameBoard(gb.getBoardGraphic());
     }
 }
