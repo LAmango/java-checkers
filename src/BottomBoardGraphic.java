@@ -27,6 +27,8 @@ public class BottomBoardGraphic extends JPanel {
                 int n = JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?\nThe current game will be lost forever!", "Quit Game", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if (n == 0) {
                     //frame.declareWinner(frame.pm.p1);
+                    frame.gm.selectedGame = null;
+                    frame.card.previous(frame.RootPanel);
                 }
             } else if ("Save".equals(command)) {
                 String def = null;

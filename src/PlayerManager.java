@@ -7,8 +7,10 @@ public class PlayerManager {
     public String secondPlayer = null;
     public Player p1, p2;
 
-    public PlayerManager() throws FileNotFoundException {
-        FileInputStream f = new FileInputStream(new File("players.txt"));
+    public PlayerManager() throws IOException {
+        File playerFile = new File("players.txt");
+        playerFile.createNewFile();
+        FileInputStream f = new FileInputStream(playerFile);
         players.clear();
         boolean cont = true;
             try (ObjectInputStream input = new ObjectInputStream(f)) {

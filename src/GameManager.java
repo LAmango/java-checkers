@@ -7,8 +7,10 @@ public class GameManager {
 
     protected Game selectedGame = null;
 
-    public GameManager() throws FileNotFoundException {
-        FileInputStream f = new FileInputStream(new File("games.txt"));
+    public GameManager() throws IOException {
+        File gameFile = new File("games.txt");
+        gameFile.createNewFile();
+        FileInputStream f = new FileInputStream(gameFile);
         games.clear();
         try (ObjectInputStream input = new ObjectInputStream(f)) {
             ArrayList<Object> obj = (ArrayList<Object>) input.readObject();

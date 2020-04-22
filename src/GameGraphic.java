@@ -38,7 +38,7 @@ public class GameGraphic extends JFrame {
         try {
             pm = new PlayerManager();
             gm = new GameManager();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         RootPanel = new JPanel();
@@ -60,10 +60,7 @@ public class GameGraphic extends JFrame {
     }
 
     public void backToWelcome() {
-        getContentPane().removeAll();
-        getContentPane().invalidate();
-        getContentPane().add(welcome);
-        getContentPane().validate();
+        card.previous(RootPanel);
     }
 
     public void startGame() {

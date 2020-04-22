@@ -434,8 +434,31 @@ class GameBoard extends CheckerType{
 
 		points = bp;
 		boardGraphic = bg;
-		//fillBoardFromPoints();
+		fillBoardFromPoints();
 		printBoard();
+	}
+
+	public void fillBoardFromPoints() {
+		for(int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				switch (points[i * 8 + j].getPiece()) {
+					case RED_REGULAR:
+						boardGraphic.addCheckerPieceToTile(Color.RED, j, i);
+						break;
+					case BLACK_REGULAR:
+						boardGraphic.addCheckerPieceToTile(Color.BLACK, j, i);
+						break;
+					case RED_KING:
+						boardGraphic.addCheckerPieceToTile(Color.RED, j, i);
+						boardGraphic.getTile(j, i).setKing();
+						break;
+					case BLACK_KING:
+						boardGraphic.addCheckerPieceToTile(Color.BLACK, j ,i);
+						boardGraphic.getTile(j, i).setKing();
+						break;
+				}
+			}
+		}
 	}
 
 	public static void fillBoard()
