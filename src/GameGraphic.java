@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 
 public class GameGraphic extends JFrame {
 
-    private GameBoardGraphic gb;
+    protected GameBoardGraphic gb;
     public GameBoard gameBoard;
     public PlayerManager pm;
     public WelcomeScreenGraphic welcome;

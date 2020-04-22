@@ -120,7 +120,7 @@ public class BoardGraphic extends JPanel {
                 if(jumps.isEmpty())
                     checkerLogic.makeMove(lastClickedTile, tileGraphic);
                 else{
-                    checkerLogic.makeJump(lastClickedTile, tileGraphic);
+                    checkerLogic.makeJump(lastClickedTile, tileGraphic, jumps);
                     emptyCheckerPiece((tileGraphic.getRow()+lastClickedTile.getRow())/2, (tileGraphic.getColumn()+lastClickedTile.getColumn())/2);
                 }
                 tileGraphic.swap(lastClickedTile);

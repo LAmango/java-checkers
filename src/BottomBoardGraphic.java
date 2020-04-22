@@ -36,7 +36,7 @@ public class BottomBoardGraphic extends JPanel {
                     frame.card.previous(frame.RootPanel);
                 }
             } else if ("Save".equals(command)) {
-                TopBoardGraphic.togglePlayerTurn();
+                //TopBoardGraphic.togglePlayerTurn();
             }
         }
     }

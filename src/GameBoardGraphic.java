@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class GameBoardGraphic extends JPanel {
 
-    private BoardGraphic game;
+    protected BoardGraphic game;
 
     public GameBoardGraphic(){}
 
