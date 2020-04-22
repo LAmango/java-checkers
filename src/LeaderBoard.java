@@ -27,6 +27,7 @@ public class LeaderBoard extends JPanel implements Style {
         lb_title.setFont(new Font("Time New Roman", Font.BOLD, 20));
         add(lb_title);
         lb_title.setForeground(TITLE_COLOR);
+        lb_title.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(Box.createVerticalStrut(10));
 
         // leaderboard list

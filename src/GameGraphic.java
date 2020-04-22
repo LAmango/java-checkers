@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**************************************************
  * GameGraphic                                    *
@@ -24,16 +25,19 @@ import java.io.FileNotFoundException;
 
 public class GameGraphic extends JFrame {
 
-    private GameBoardGraphic gb = new GameBoardGraphic();
+    private GameBoardGraphic gb;
     public GameBoard gameBoard;
     public PlayerManager pm;
+    public GameManager gm;
     public WelcomeScreenGraphic welcome;
     public CardLayout card = new CardLayout();
     public JPanel RootPanel;
 
     public GameGraphic() {
+        gb = new GameBoardGraphic();
         try {
             pm = new PlayerManager();
+            gm = new GameManager();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -68,6 +72,25 @@ public class GameGraphic extends JFrame {
         RootPanel.add(gb);
         card.next(RootPanel);
         //setNewPanel(gb);
-        gameBoard = new GameBoard(gb.getBoardGraphic());
+        if (gm.selectedGame != null) {
+            gameBoard = new GameBoard(gb.getBoardGraphic(), gm.selectedGame.points);
+        } else {
+            gameBoard = new GameBoard(gb.getBoardGraphic());
+        }
+    }
+
+    public void declareWinner(Player p) {
+        String message = p.name + " is the Winner!";
+        JOptionPane.showConfirmDialog(this, message, "Winner!!", JOptionPane.PLAIN_MESSAGE);
+
+        try {
+            pm.updatePlayerWins(p.name);
+            gm.removeGame();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        WelcomeScreenGraphic.updateLoadGame();
+        WelcomeScreenGraphic.updateLeaderBoard();
+        card.previous(RootPanel);
     }
 }

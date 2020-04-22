@@ -11,7 +11,7 @@ public class BoardGraphic extends JPanel {
     protected GameBoard gameBoard;
     protected ArrayList<BoardPoint> spots;
     protected ArrayList<BoardPoint> jumps;
-    protected int turn;
+    protected static int turn;
     public GameGraphic frame;
 
     public BoardGraphic(GameGraphic f) {

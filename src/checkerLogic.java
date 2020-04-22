@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.*;
@@ -303,7 +304,16 @@ class GameBoard extends CheckerType{
 		fillBoard();
 		printBoard();
 	}
-	
+
+	public GameBoard(BoardGraphic bg, BoardPoint[] bp) {
+		System.out.println();
+
+		points = bp;
+		boardGraphic = bg;
+		//fillBoardFromPoints();
+		printBoard();
+	}
+
 	public static void fillBoard()
 	{
 		for(int i = 0, x = 0, y = 0; i < points.length; i++, y++){
@@ -411,7 +421,7 @@ class CheckerType {
 	public static final int RED_KING = 4;
 }
 
-class BoardPoint {
+class BoardPoint implements Serializable {
 	private int row;
 	private int column;
 	private int index;

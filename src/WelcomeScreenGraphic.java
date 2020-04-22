@@ -20,15 +20,18 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
     static JPanel bottomWelcome = new JPanel();
     static GameGraphic frame;
     static PlayerManager pm;
+    static GameManager gm;
     static Boolean playerAdded = false;
-    static JButton startButton;
+    static JButton startButton, loadButton;
     static PlayerSelectionPanel firstPlayer;
     static PlayerSelectionPanel secondPlayer;
     static LeaderBoard leaderBoard;
+    static LoadGameBoard loadGameBoard;
 
     public WelcomeScreenGraphic(GameGraphic f) {
         frame = f;
         pm = frame.pm;
+        gm = frame.gm;
         // set panel settings
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(new EmptyBorder(10,10,10,10));
@@ -43,13 +46,25 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         title.setForeground(TITLE_COLOR);
         title.setBorder(new EmptyBorder(5,5,5,5));
 
-        // button component
+        // top buttons
+        Box buttons = new Box(BoxLayout.X_AXIS);
+        buttons.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // startbutton component
         startButton = new JButton("Start Game");
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startButton.addActionListener(new P1Panel());
+        buttons.add(startButton);
+
+        // loadButton component
+        loadButton = new JButton("Load Game");
+        loadButton.addActionListener(new LGPanel());
+        buttons.add(Box.createHorizontalStrut(10));
+        buttons.add(loadButton);
 
         // bottom welcomeScreen cardLayout component
         leaderBoard = new LeaderBoard(pm.players);
+
+        loadGameBoard = new LoadGameBoard(gm.games);
 
         firstPlayer = new PlayerSelectionPanel(pm.players, 1, false);
         secondPlayer = new PlayerSelectionPanel(pm.players, 2, true);
@@ -57,13 +72,14 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         bottomWelcome.add("lb", leaderBoard);
         bottomWelcome.add("p1", firstPlayer);
         bottomWelcome.add("p2", secondPlayer);
+        bottomWelcome.add("lg", loadGameBoard);
 
 
         // add components to panel
         add(Box.createVerticalStrut(20));
         add(title);
         add(Box.createVerticalStrut(20));
-        add(startButton);
+        add(buttons);
         add(Box.createVerticalStrut(20));
         add(bottomWelcome);
     }
@@ -87,6 +103,19 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
 
     public static void updateLeaderBoard() {
         leaderBoard.updateBoard(frame.pm.players);
+    }
+
+    public static void updateLoadGame() {
+        loadGameBoard.updateLoadGame(gm.games);
+    }
+
+    public static class LGPanel implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            startButton.setEnabled(false);
+            firstPlayer.resetPanel();
+            card.show(bottomWelcome, "lg");
+        }
     }
 
     public static class P1Panel implements ActionListener {
@@ -125,6 +154,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             startButton.setEnabled(true);
+            gm.selectedGame = null;
             card.show(bottomWelcome, "lb");
         }
     }
@@ -132,20 +162,25 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
     public static class StartGame implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            if(playerAdded) {
-                secondPlayer.playerListModel.addElement(pm.secondPlayer);
-                firstPlayer.playerListModel.addElement(pm.secondPlayer);
-                leaderBoard.playerListModel.addElement(pm.secondPlayer);
-                try {
-                    pm.addPlayer(pm.secondPlayer);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
+            if (e.getActionCommand().equals("Load")) {
+                pm.p1 = gm.selectedGame.player1;
+                pm.p2 = gm.selectedGame.player2;
+            } else {
+                if (playerAdded) {
+                    secondPlayer.playerListModel.addElement(pm.secondPlayer);
+                    firstPlayer.playerListModel.addElement(pm.secondPlayer);
+                    leaderBoard.playerListModel.addElement(pm.secondPlayer);
+                    try {
+                        pm.addPlayer(pm.secondPlayer);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
+                playerAdded = false;
+                pm.createPlayersForGame();
             }
-            playerAdded = false;
             card.show(bottomWelcome, "lb");
             startButton.setEnabled(true);
-            pm.createPlayersForGame();
             frame.startGame();
         }
     }
@@ -186,6 +221,23 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
                     panel.next.setEnabled(true);
                 }
             }
+        }
+    }
+
+    static class GameListListener implements ListSelectionListener {
+
+        private LoadGameBoard loadGame;
+
+        GameListListener(LoadGameBoard lgb) {
+            loadGame = lgb;
+        }
+
+        @Override
+        public void valueChanged(ListSelectionEvent listSelectionEvent) {
+            if (loadGame.gameList.getSelectedValue() == null) return;
+            gm.selectGame(loadGame.gameList.getSelectedValue().toString());
+            loadGame.card.show(loadGame.selectedGamePanel, gm.selectedGame.name);
+            loadGame.load.setEnabled(true);
         }
     }
 

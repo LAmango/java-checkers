@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.scripts.JO;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,18 +23,32 @@ public class BottomBoardGraphic extends JPanel {
             String command = e.getActionCommand();
             if("Back".equals(command)){
                 int n = JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?\nThe current game will be lost forever!", "Quit Game", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                System.out.println(n);
                 if (n == 0) {
+                    //frame.declareWinner(frame.pm.p1);
+                }
+            } else if ("Save".equals(command)) {
+                String def = null;
+                String n = null;
+                if (frame.gm.selectedGame != null) {
+                    def = frame.gm.selectedGame.name;
+                }
+                try {
+                    n = JOptionPane.showInputDialog(frame, "Name your saved game!", "Save Game", JOptionPane.PLAIN_MESSAGE, null, null, def).toString();
+                } catch (NullPointerException npe) {
+                    //npe.printStacktrace();
+                }
+                if (n != null) {
                     try {
-                        frame.pm.updatePlayerWins(frame.pm.p1.name);
+                        if(frame.gm.selectedGame != null) {
+                            frame.gm.games.remove(frame.gm.selectedGame);
+                        }
+                        frame.gm.addGame(GameBoard.points, frame.pm.p1, frame.pm.p2, BoardGraphic.turn, n);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
-                    WelcomeScreenGraphic.updateLeaderBoard();
+                    WelcomeScreenGraphic.updateLoadGame();
                     frame.card.previous(frame.RootPanel);
                 }
-            } else if ("Save".equals(command)) {
-                TopBoardGraphic.togglePlayerTurn();
             }
         }
     }
