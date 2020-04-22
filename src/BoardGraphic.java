@@ -65,10 +65,11 @@ public class BoardGraphic extends JPanel {
     
     public void resetHighlight(){
         for(int row = 0, col = 0; row < 8 ; col++){
-            TileGraphic t = this.getTile(row, col);
+            TileGraphic t = this.getTile(col, row);
+            //System.out.println(t.getCords());
             t.resetHighlight();
             if(col == 7){
-                col = 0;
+                col = -1;
                 row++;
             }
         }
@@ -102,7 +103,7 @@ public class BoardGraphic extends JPanel {
             System.out.println("NEW CLICK!!!");
             System.out.println(tileGraphic.getCords());
 
-            resetHighlight();
+            //resetHighlight();
             //System.out.println("jumps size1: " + jumps.size());
             boolean match = false;
             for (BoardPoint p : spots){
@@ -115,19 +116,22 @@ public class BoardGraphic extends JPanel {
             }
             //spots.clear();
             //jumps.clear();
-            //if(tileGraphic)
             if (match == true && tileGraphic.getBackgroundColor() == Color.BLACK){
                 if(jumps.isEmpty())
                     checkerLogic.makeMove(lastClickedTile, tileGraphic);
                 else{
-                    checkerLogic.makeJump(lastClickedTile, tileGraphic);
+                    checkerLogic.makeJump(lastClickedTile, tileGraphic, jumps);
                     emptyCheckerPiece((tileGraphic.getRow()+lastClickedTile.getRow())/2, (tileGraphic.getColumn()+lastClickedTile.getColumn())/2);
                 }
                 tileGraphic.swap(lastClickedTile);
                 turn = (turn == 1) ? 2 : 1;
+                TopBoardGraphic.togglePlayerTurn();
+                resetHighlight();
             }
             else{
                 if( (tileGraphic.getColorPiece() == Color.BLACK && turn == 1) || (tileGraphic.getColorPiece() == Color.RED && turn == 2) ){
+                    resetHighlight();
+                    jumps.clear();
                     jumps = checkerLogic.jumpAvailable(tileGraphic);
                     if(jumps.isEmpty())
                         spots = checkerLogic.moveAvailable(tileGraphic);
@@ -146,7 +150,6 @@ public class BoardGraphic extends JPanel {
                     }
                 }
             }
-            //tileGraphic.setKing();
             super.mouseClicked(e);
         }
     }

@@ -25,7 +25,7 @@ import java.io.IOException;
 
 public class GameGraphic extends JFrame {
 
-    private GameBoardGraphic gb;
+    protected GameBoardGraphic gb;
     public GameBoard gameBoard;
     public PlayerManager pm;
     public GameManager gm;
