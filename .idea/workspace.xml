@@ -126,7 +126,7 @@
       <workItem from="1587155403721" duration="69000" />
       <workItem from="1587157385965" duration="4404000" />
       <workItem from="1587219002532" duration="59268000" />
-      <workItem from="1587481765837" duration="35513000" />
+      <workItem from="1587481765837" duration="35854000" />
     </task>
     <task id="LOCAL-00001" summary="fixed player selection issues and added play initialization for game">
       <created>1587326406914</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587326406914</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="saving game and loading working, still need to fill in the board correctly">
+      <created>1587535529290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587535529290</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,7 +162,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed player selection issues and added play initialization for game" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed player selection issues and added play initialization for game" />
+    <MESSAGE value="saving game and loading working, still need to fill in the board correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="saving game and loading working, still need to fill in the board correctly" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2531" y="132" width="1026" height="844" key="#Project_Structure" timestamp="1586897727670">
@@ -182,10 +190,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2128" y="334" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586896769327" />
-    <state width="415" height="465" key="DebuggerActiveHint" timestamp="1587238742949">
+    <state width="435" height="465" key="DebuggerActiveHint" timestamp="1587535326788">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="415" height="465" key="DebuggerActiveHint/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587238742949" />
+    <state width="435" height="465" key="DebuggerActiveHint/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587535326788" />
     <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl" timestamp="1586898021496">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -230,10 +238,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2544" y="190" width="1026" height="844" key="SettingsEditor/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898497823" />
-    <state x="2729" y="277" width="802" height="527" key="Vcs.Push.Dialog.v2" timestamp="1587492782193">
+    <state x="2729" y="277" width="802" height="527" key="Vcs.Push.Dialog.v2" timestamp="1587535531568">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2729" y="277" width="802" height="527" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587492782193" />
+    <state x="2729" y="277" width="802" height="527" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587535531568" />
     <state x="2752" y="233" width="764" height="615" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587264224132">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -246,19 +254,5 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2486" y="164" width="1296" height="752" key="new project wizard/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587047885698" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/checkerLogic.java</url>
-          <line>307</line>
-          <properties class="GameBoard" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
