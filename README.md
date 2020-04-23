@@ -9,3 +9,10 @@
 1. You have the ability to create a player with your own name or nickname
 2. You have the ability to save your current game and load it back on. You can not close the program window otherwise program does not run properly
 3. After completion of a game, wins will be stored on a leaderboard next to the player's name
+
+## Who coded what:
+1. Lucas was in charge of creating the GUI interface and classes
+2. Steven coded the logic behind the game
+
+## Interface:
+1. The checkerLogic class is where the program runs
