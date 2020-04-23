@@ -7,5 +7,5 @@
 
 ## Features:
 1. You have the ability to create a player with your own name or nickname
-2. You have the ability to save your current game and load it back on when you run the program again at a later time
+2. You have the ability to save your current game and load it back on. You can not close the program window otherwise program does not run properly
 3. After completion of a game, wins will be stored on a leaderboard next to the player's name
