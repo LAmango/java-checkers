@@ -50,6 +50,7 @@ public class BottomBoardGraphic extends JPanel {
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
+                    frame.gm.selectedGame = null;
                     WelcomeScreenGraphic.updateLoadGame();
                     frame.card.previous(frame.RootPanel);
                 }

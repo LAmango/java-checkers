@@ -92,4 +92,10 @@ public class LoadGameBoard extends JPanel implements Style {
         }
     }
 
+    public void resetLoadGame() {
+        gameList.clearSelection();
+        load.setEnabled(false);
+        card.first(selectedGamePanel);
+    }
+
 }

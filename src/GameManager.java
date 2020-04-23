@@ -35,9 +35,9 @@ public class GameManager {
     public void removeGame() throws IOException {
         if (selectedGame != null) {
             games.remove(selectedGame);
-        }
 
-        saveGames();
+            saveGames();
+        }
     }
 
     public void addGame(BoardPoint[] pts, Player p1, Player p2, int t, String n) throws IOException {

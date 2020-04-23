@@ -114,6 +114,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
         public void actionPerformed(ActionEvent actionEvent) {
             startButton.setEnabled(false);
             firstPlayer.resetPanel();
+            loadGameBoard.resetLoadGame();
             card.show(bottomWelcome, "lg");
         }
     }
@@ -177,6 +178,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
                     }
                 }
                 playerAdded = false;
+                gm.selectedGame = null;
                 pm.createPlayersForGame();
             }
             card.show(bottomWelcome, "lb");
