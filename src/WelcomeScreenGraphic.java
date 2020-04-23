@@ -19,7 +19,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
     static CardLayout card = new CardLayout();
     static JPanel bottomWelcome = new JPanel();
     static GameGraphic frame;
-    static PlayerManager pm;
+    public static PlayerManager pm;
     static GameManager gm;
     static Boolean playerAdded = false;
     static JButton startButton, loadButton;
@@ -228,7 +228,7 @@ public class WelcomeScreenGraphic extends JPanel implements Style {
 
     static class GameListListener implements ListSelectionListener {
 
-        private LoadGameBoard loadGame;
+        public LoadGameBoard loadGame;
 
         GameListListener(LoadGameBoard lgb) {
             loadGame = lgb;
