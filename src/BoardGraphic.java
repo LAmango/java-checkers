@@ -22,7 +22,6 @@ public class BoardGraphic extends JPanel {
         } else {
             turn = 1;
         }
-        System.out.println("turn:" + turn);
         frame = f;
         spots = new ArrayList<BoardPoint>(0);
         jumps = new ArrayList<BoardPoint>(0);
@@ -73,7 +72,6 @@ public class BoardGraphic extends JPanel {
     public void resetHighlight(){
         for(int row = 0, col = 0; row < 8 ; col++){
             TileGraphic t = this.getTile(col, row);
-            //System.out.println(t.getCords());
             t.resetHighlight();
             if(col == 7){
                 col = -1;
@@ -89,12 +87,10 @@ public class BoardGraphic extends JPanel {
     
     public void emptyCheckerPiece(int row, int col){
         TileGraphic t = this.getTile(col, row);
-        //System.out.println("CORDS: " + t.getCords());
         t.makeEmpty();
     }
 
     public TileGraphic getTile(int row, int col) {
-        //System.out.println(this.getComponent(col * 8 + row));
         return (TileGraphic) this.getComponent(col * 8 + row);
     }
 
@@ -107,11 +103,6 @@ public class BoardGraphic extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            System.out.println("NEW CLICK!!!");
-            System.out.println(tileGraphic.getCords());
-
-            //resetHighlight();
-            //System.out.println("jumps size1: " + jumps.size());
             boolean match = false;
             for (BoardPoint p : spots){
                 if(tileGraphic.equals(p))
@@ -121,8 +112,6 @@ public class BoardGraphic extends JPanel {
                 if(tileGraphic.equals(p))
                     match = true;
             }
-            //spots.clear();
-            //jumps.clear();
             if (match == true && tileGraphic.getBackgroundColor() == Color.BLACK){
                 if(jumps.isEmpty())
                     checkerLogic.makeMove(lastClickedTile, tileGraphic);
@@ -146,8 +135,6 @@ public class BoardGraphic extends JPanel {
                     jumps = checkerLogic.jumpAvailable(tileGraphic);
                     if(jumps.isEmpty())
                         spots = checkerLogic.moveAvailable(tileGraphic);
-                    //System.out.println("size: " + spots.size());
-                    //System.out.println("jumps size2: " + jumps.size());
                     lastClickedTile = tileGraphic;
                     if(!jumps.isEmpty()){
                         for (BoardPoint p : jumps){

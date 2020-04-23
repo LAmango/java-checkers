@@ -146,24 +146,16 @@ public class TileGraphic extends JPanel {
     public void swap(TileGraphic lastTile){
         TileGraphic temp = new TileGraphic(this);
         
-        //System.out.println("this tile: " + row);
-        //System.out.println("last tile: " + lastTile.row);
-        
         this.hasCheckPiece = lastTile.hasCheckPiece;
         this.isKing = lastTile.isKing;
         this.pieceColor = lastTile.pieceColor;
-        //this.row = lastTile.row;
-        //this.col = lastTile.col;
         
         lastTile.hasCheckPiece = temp.hasCheckPiece;
         lastTile.isKing = temp.isKing;
         lastTile.pieceColor = temp.pieceColor;
-        //lastTile.row = temp.row;
-        //lastTile.col = temp.col;
-        
+
         if(!lastTile.hasCheckPiece)
             lastTile.makeEmpty();
-        //this.makeEmpty();
             
         repaint();
     }
