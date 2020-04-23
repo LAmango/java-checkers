@@ -29,8 +29,6 @@ import java.util.*;
 public class checkerLogic extends CheckerType{
 	
 	protected static GameGraphic gameFrame;
-	protected static Player p1;
-	protected static Player p2;
 	
 	public static ArrayList<BoardPoint> moveAvailable(TileGraphic tile)
 	{
@@ -74,7 +72,7 @@ public class checkerLogic extends CheckerType{
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
-		else if (point.getPiece() == 3 || point.getPiece() == 4){
+		else if (point.getPiece() == BLACK_KING || point.getPiece() == RED_KING){
 			if( point.getIndex() + (9*jump) <= 63 ){
 				if( validSpot(board[point.getIndex()+(9*jump)]) )
 					list.add(board[point.getIndex()+(9*jump)]);
@@ -126,7 +124,7 @@ public class checkerLogic extends CheckerType{
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
-		else if (point.getPiece() == 3 || point.getPiece() == 4){
+		else if (point.getPiece() == BLACK_KING || point.getPiece() == RED_KING){
 			System.out.println("index: " + point.getIndex());
 			if( point.getIndex() + (9*jump) <= 63 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() + (9*(jump+1)) <= 63){
 				if( differentPiece(point, board[point.getIndex()+(9*jump)]) && validSpot(board[point.getIndex()+(9*(jump+1))]))
@@ -181,23 +179,39 @@ public class checkerLogic extends CheckerType{
 			//	System.out.println("point: " + point.getIndex());
 			}
 		}
-		else if (point.getPiece() == 3 || point.getPiece() == 4){
+		else if (point.getPiece() == BLACK_KING || point.getPiece() == RED_KING){
 			System.out.println("index: " + point.getIndex());
 			if( point.getIndex() + (9*jump) <= 63 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() + (9*(jump+2)) <= 63){
 				if( differentPiece(point, board[point.getIndex()+(9*(jump+1))]) && validSpot(board[point.getIndex()+(9*(jump+2))]))
 					list.add(board[point.getIndex()+(9*(jump+2))]);
 			}
+			if( point.getIndex() + (9*jump) <= 63 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() + (8*(jump+2)) <= 63){
+				if( differentPiece(point, board[point.getIndex()+(9*(jump+1))]) && validSpot(board[point.getIndex()+(8*(jump+2))]))
+					list.add(board[point.getIndex()+(8*(jump+2))]);
+			}
 			if( point.getIndex() + (7*jump) <= 63 && (point.getCol() != 0 || point.getCol() != 1) && point.getIndex() + (7*(jump+2)) <= 63){
 				if( differentPiece(point, board[point.getIndex()+(7*(jump+1))]) && validSpot(board[point.getIndex()+(7*(jump+2))]))
 					list.add(board[point.getIndex()+(7*(jump+2))]);
 			}
+			if( point.getIndex() + (7*jump) <= 63 && (point.getCol() != 0 || point.getCol() != 1) && point.getIndex() + (8*(jump+2)) <= 63){
+				if( differentPiece(point, board[point.getIndex()+(7*(jump+1))]) && validSpot(board[point.getIndex()+(8*(jump+2))]))
+					list.add(board[point.getIndex()+(8*(jump+2))]);
+			}
 			if( point.getIndex() - (9*jump) >= 0 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() - (9*(jump+2)) >= 0){
 				if( differentPiece(point, board[point.getIndex()-(9*(jump+1))]) && validSpot(board[point.getIndex()-(9*(jump+2))]))
 					list.add(board[point.getIndex()-(9*(jump+2))]);
-			}			
+			}
+			if( point.getIndex() - (9*jump) >= 0 && (point.getCol() != 7 || point.getCol() != 6) && point.getIndex() - (8*(jump+2)) >= 0){
+				if( differentPiece(point, board[point.getIndex()-(9*(jump+1))]) && validSpot(board[point.getIndex()-(8*(jump+2))]))
+					list.add(board[point.getIndex()-(8*(jump+2))]);
+			}
 			if( point.getIndex() - (7*jump) >= 0 && (point.getCol() != 0 || point.getCol() != 1) && point.getIndex() - (7*(jump+2)) >= 0){
 				if( differentPiece(point, board[point.getIndex()-(7*(jump+1))]) && validSpot(board[point.getIndex()-(7*(jump+2))]))
 					list.add(board[point.getIndex()-(7*(jump+2))]);
+			}
+			if( point.getIndex() - (7*jump) >= 0 && (point.getCol() != 0 || point.getCol() != 1) && point.getIndex() - (8*(jump+2)) >= 0){
+				if( differentPiece(point, board[point.getIndex()-(7*(jump+1))]) && validSpot(board[point.getIndex()-(8*(jump+2))]))
+					list.add(board[point.getIndex()-(8*(jump+2))]);
 			}
 		}
 		
@@ -266,10 +280,10 @@ public class checkerLogic extends CheckerType{
 		int index = startPoint.getIndex()-((startPoint.getIndex()-endPoint.getIndex())/2);
 		System.out.println("index: " + index);
 		
-		if (gameFrame.gameBoard.points[index].getPiece() == 1 || points[index].getPiece() == 3)
-			gameFrame.pm.p1.eliminatePiece();
-		else if (points[index].getPiece() == 2 || points[index].getPiece() == 4)
-			gameFrame.pm.p2.eliminatePiece();
+		if (gameFrame.gameBoard.points[index].getPiece() == BLACK_REGULAR || points[index].getPiece() == BLACK_KING)
+			gameFrame.pm.p1.eliminatePiece(1);
+		else if (points[index].getPiece() == RED_REGULAR || points[index].getPiece() == RED_KING)
+			gameFrame.pm.p2.eliminatePiece(1);
 			
 		gameFrame.gameBoard.emptySpot(points[index]);
 		gameFrame.gameBoard.swap(startPoint, endPoint);
@@ -302,12 +316,12 @@ public class checkerLogic extends CheckerType{
 		System.out.println("index1: " + index1);
 		System.out.println("index2: " + index2);
 		
-		if ( (gameFrame.gameBoard.points[index1].getPiece() == 1 || points[index1].getPiece() == 3 ) &&
-				(gameFrame.gameBoard.points[index2].getPiece() == 1 || points[index2].getPiece() == 3 ) )
-			gameFrame.pm.p1.eliminatePiece();
-		else if ( (points[index1].getPiece() == 2 || points[index1].getPiece() == 4) && 
-					(points[index2].getPiece() == 2 || points[index2].getPiece() == 4))
-			gameFrame.pm.p2.eliminatePiece();
+		if ( (gameFrame.gameBoard.points[index1].getPiece() == BLACK_REGULAR || points[index1].getPiece() == BLACK_KING ) &&
+				(gameFrame.gameBoard.points[index2].getPiece() == BLACK_REGULAR || points[index2].getPiece() == BLACK_KING ) )
+			gameFrame.pm.p1.eliminatePiece(2);
+		else if ( (points[index1].getPiece() == RED_REGULAR || points[index1].getPiece() == RED_KING) && 
+					(points[index2].getPiece() == RED_REGULAR || points[index2].getPiece() == RED_KING))
+			gameFrame.pm.p2.eliminatePiece(2);
 			
 		TileGraphic tile2 = gameFrame.gb.game.getTile(points[index1].getCol(), points[index1].getRow() );
 		TileGraphic tile3 = gameFrame.gb.game.getTile(points[index2].getCol(), points[index2].getRow() );
@@ -331,6 +345,13 @@ public class checkerLogic extends CheckerType{
 		gameFrame.gameBoard.printBoard();
 	}
 	
+	public static boolean validIndex(int index)
+	{
+		if (index >= 0 && index <= 63)
+			return true;
+		return false;
+	}
+	
 	public static boolean validSpot(BoardPoint point)
 	{
 		//System.out.println(point.getPiece());
@@ -343,29 +364,29 @@ public class checkerLogic extends CheckerType{
 	public static boolean differentPiece(BoardPoint startPoint, BoardPoint diffPoint)
 	{
 		if ( (startPoint.getPiece() != diffPoint.getPiece()) && diffPoint.getPiece() != 0){
-			if( startPoint.getPiece() == 3 )
-				return (diffPoint.getPiece() != 1) ? true : false;
-			else if ( startPoint.getPiece() == 4 )
-				return (diffPoint.getPiece() != 2) ? true : false;
-			else if ( startPoint.getPiece() == 1)
-				return (diffPoint.getPiece() != 3) ? true : false;
-			else if ( startPoint.getPiece() == 2)
-				return (diffPoint.getPiece() != 4) ? true : false;
+			if( startPoint.getPiece() == BLACK_KING )
+				return (diffPoint.getPiece() != BLACK_REGULAR) ? true : false;
+			else if ( startPoint.getPiece() == RED_KING )
+				return (diffPoint.getPiece() != RED_REGULAR) ? true : false;
+			else if ( startPoint.getPiece() == BLACK_REGULAR)
+				return (diffPoint.getPiece() != BLACK_KING) ? true : false;
+			else if ( startPoint.getPiece() == RED_REGULAR)
+				return (diffPoint.getPiece() != RED_KING) ? true : false;
 		}
 		return false;
 	}
 
-	public static boolean checkForWin(Player p1, Player p2)
+	public static int checkForWin()
 	{
-		if (p1.getGamePieces() == 0 || p2.getGamePieces() == 0)
-			return true;
-		return false;
+		if (gameFrame.pm.p2.getGamePieces() == 0)
+			return 1;
+		else if (gameFrame.pm.p1.getGamePieces() == 0)
+			return 2;
+		return 0;
 	}
 	
 	public static void main(String[] args) {
 		gameFrame = new GameGraphic();
-		//moveAvailable(gameFrame.gameBoard.points, gameFrame.gameBoard.points[3]);
-		//System.out.println(checkForMove(gameFrame.gameBoard, p1, 5 , 4));
 	}
 	
 }
@@ -397,8 +418,8 @@ class Player implements Serializable, Comparable<Player> {
 	{ return playerNumber; }
 	
 	//gamePieces
-	public void eliminatePiece()
-	{ gamePieces--; }
+	public void eliminatePiece(int takeaway)
+	{ gamePieces = gamePieces - takeaway; }
 	
 	public int getGamePieces()
 	{ return gamePieces; }
@@ -416,7 +437,6 @@ class Player implements Serializable, Comparable<Player> {
 
 class GameBoard extends CheckerType{
 	
-	//protected static int[][] board = new int[8][8];
 	protected static BoardPoint[] points = new BoardPoint[64];
 	protected static BoardGraphic boardGraphic;
 
@@ -502,24 +522,7 @@ class GameBoard extends CheckerType{
 			}
 		}
 	}
-	/*
-	public int checkType(int pos)
-	{
-		int x = pos/8, y = pos%8;
-		switch (board[x][y]) {
-			case BLACK_REGULAR:
-				return BLACK_REGULAR;
-			case BLACK_KING:
-				return BLACK_KING;
-			case RED_REGULAR:
-				return RED_REGULAR;
-			case RED_KING:
-				return RED_KING;
-			default:
-				return 0;
-		}
-	}
-	*/
+
 	public void printBoard()
 	{
 		for(int x = 0, y = 0; x < points.length; x++, y++){
@@ -596,17 +599,6 @@ class BoardPoint implements Serializable {
 		spaceColor = color;
 	}
 	
-	/*
-	public BoardPoint(int a, int b){
-		this(a, b, 0);
-	}
-	
-	public BoardPoint(int a, int b, int p){
-		x = a;
-		y = b;
-		piece = p;
-	}
-	*/
 	public void setPiece(int p){
 		piece = p;
 	}
@@ -655,6 +647,5 @@ class BoardPoint implements Serializable {
 		//System.out.println("this: " + index);
 		//System.out.println("point2: " + point2.index);
 	}
-	
 	
 }

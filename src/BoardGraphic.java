@@ -15,7 +15,14 @@ public class BoardGraphic extends JPanel {
     public GameGraphic frame;
 
     public BoardGraphic(GameGraphic f) {
-        turn = 1;
+        if (f.gm.selectedGame != null) {
+            turn = f.gm.selectedGame.turn;
+            if (turn == 2)
+                TopBoardGraphic.togglePlayerTurn();
+        } else {
+            turn = 1;
+        }
+        System.out.println("turn:" + turn);
         frame = f;
         spots = new ArrayList<BoardPoint>(0);
         jumps = new ArrayList<BoardPoint>(0);
@@ -127,6 +134,10 @@ public class BoardGraphic extends JPanel {
                 turn = (turn == 1) ? 2 : 1;
                 TopBoardGraphic.togglePlayerTurn();
                 resetHighlight();
+                if (checkerLogic.checkForWin() == 1)
+                    checkerLogic.gameFrame.declareWinner(checkerLogic.gameFrame.pm.p1);
+                else if (checkerLogic.checkForWin() == 2)
+                    checkerLogic.gameFrame.declareWinner(checkerLogic.gameFrame.pm.p2);
             }
             else{
                 if( (tileGraphic.getColorPiece() == Color.BLACK && turn == 1) || (tileGraphic.getColorPiece() == Color.RED && turn == 2) ){
