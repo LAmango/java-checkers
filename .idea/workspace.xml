@@ -22,12 +22,12 @@
     <list default="true" id="39e41da2-9a2d-4ac0-8536-f1326bb45069" name="Default Changelist" comment="fixed player selection issues and added play initialization for game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BottomBoardGraphic$ButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/BottomBoardGraphic$ButtonListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/BoardGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/CheckerType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-checkers/checkerLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/players.txt" beforeDir="false" afterPath="$PROJECT_DIR$/players.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BottomBoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BottomBoardGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoadGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadGameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WelcomeScreenGraphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +116,7 @@
       <workItem from="1587157385965" duration="4404000" />
       <workItem from="1587219002532" duration="59268000" />
       <workItem from="1587481765837" duration="37150000" />
-      <workItem from="1587581910371" duration="10662000" />
+      <workItem from="1587581910371" duration="12040000" />
     </task>
     <task id="LOCAL-00001" summary="fixed player selection issues and added play initialization for game">
       <created>1587326406914</created>
@@ -146,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587589467626</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="more save game fixes">
+      <created>1587600890093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587600890093</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +176,9 @@
     <MESSAGE value="fixed player selection issues and added play initialization for game" />
     <MESSAGE value="saving game and loading working, still need to fill in the board correctly" />
     <MESSAGE value="board gets populated from saved game" />
-    <option name="LAST_COMMIT_MESSAGE" value="board gets populated from saved game" />
+    <MESSAGE value="more save game fixes" />
+    <MESSAGE value="more save game fixes again!" />
+    <option name="LAST_COMMIT_MESSAGE" value="more save game fixes again!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2531" y="132" width="1026" height="844" key="#Project_Structure" timestamp="1586897727670">
@@ -204,26 +213,26 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2661" y="266" width="757" height="574" key="FileChooserDialogImpl/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1586898021496" />
-    <state width="1374" height="334" key="GridCell.Tab.0.bottom" timestamp="1587598821060">
+    <state width="1374" height="312" key="GridCell.Tab.0.bottom" timestamp="1587601051305">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1374" height="334" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587598821060" />
-    <state width="1374" height="334" key="GridCell.Tab.0.center" timestamp="1587598821060">
+    <state width="1374" height="312" key="GridCell.Tab.0.bottom/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587601051305" />
+    <state width="1374" height="312" key="GridCell.Tab.0.center" timestamp="1587601051305">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1374" height="334" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587598821060" />
-    <state width="1374" height="334" key="GridCell.Tab.0.left" timestamp="1587598821060">
+    <state width="1374" height="312" key="GridCell.Tab.0.center/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587601051305" />
+    <state width="1374" height="312" key="GridCell.Tab.0.left" timestamp="1587601051305">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946868" />
-    <state width="1374" height="334" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587598821060" />
-    <state width="1374" height="334" key="GridCell.Tab.0.right" timestamp="1587598821060">
+    <state width="1374" height="312" key="GridCell.Tab.0.left/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587601051305" />
+    <state width="1374" height="312" key="GridCell.Tab.0.right" timestamp="1587601051305">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1876" height="123" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@0.27.1920.1029" timestamp="1586975946869" />
-    <state width="1374" height="334" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587598821060" />
+    <state width="1374" height="312" key="GridCell.Tab.0.right/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587601051305" />
     <state width="1374" height="334" key="GridCell.Tab.1.bottom" timestamp="1587598821061">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -260,10 +269,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2752" y="233" width="764" height="615" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587264224132" />
-    <state x="2813" y="332" width="626" height="416" key="git4idea.merge.GitPullDialog" timestamp="1587535547179">
+    <state x="2813" y="332" width="626" height="416" key="git4idea.merge.GitPullDialog" timestamp="1587600898578">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2813" y="332" width="626" height="416" key="git4idea.merge.GitPullDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587535547179" />
+    <state x="2813" y="332" width="626" height="416" key="git4idea.merge.GitPullDialog/1920.0.1920.1080/3840.0.1920.1080/0.27.1920.1029@1920.0.1920.1080" timestamp="1587600898578" />
     <state x="2486" y="164" width="1296" height="752" key="new project wizard" timestamp="1587047885698">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
